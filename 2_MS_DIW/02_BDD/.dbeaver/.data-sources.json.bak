@@ -1,0 +1,60 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-1835b4307f1-2510ba45171671c9": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "localhost",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mysql://localhost:3306/",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"auth-model": "native"
+			},
+			"custom-properties": {
+				"SQLEditor.outputPanel.autoShow": "false",
+				"database.meta.separate.connection": "false"
+			}
+		}
+	},
+	"virtual-models": {
+		"mysql8-1835b4307f1-2510ba45171671c9": {
+			"papyrus": {
+				"@properties": {
+					"erd.diagram.state": {
+						"serialized": "<diagram version=\"1\" name=\"empty\" time=\"202209291541\"><entities><data-source id=\"mysql8-1835b4307f1-2510ba45171671c9\"><entity id=\"1\" name=\"entcom\" fq-name=\"papyrus.entcom\" order=\"0\" x=\"620\" y=\"409\"><path name=\"papyrus\"/></entity><entity id=\"2\" name=\"fournis\" fq-name=\"papyrus.fournis\" order=\"1\" x=\"320\" y=\"359\"><path name=\"papyrus\"/></entity><entity id=\"3\" name=\"ligcom\" fq-name=\"papyrus.ligcom\" order=\"2\" x=\"587\" y=\"40\"><path name=\"papyrus\"/></entity><entity id=\"4\" name=\"produit\" fq-name=\"papyrus.produit\" order=\"3\" x=\"320\" y=\"35\"><path name=\"papyrus\"/></entity><entity id=\"5\" name=\"vente\" fq-name=\"papyrus.vente\" order=\"4\" x=\"20\" y=\"236\"><path name=\"papyrus\"/></entity></data-source></entities><relations><relation name=\"ligcom_ibfk_1\" fq-name=\"papyrus.ligcom.ligcom_ibfk_1\" type=\"fk\" pk-ref=\"1\" fk-ref=\"3\"/><relation name=\"entcom_ibfk_1\" fq-name=\"papyrus.entcom.entcom_ibfk_1\" type=\"fk\" pk-ref=\"2\" fk-ref=\"1\"/><relation name=\"vente_ibfk_1\" fq-name=\"papyrus.vente.vente_ibfk_1\" type=\"fk\" pk-ref=\"2\" fk-ref=\"5\"/><relation name=\"ligcom_ibfk_2\" fq-name=\"papyrus.ligcom.ligcom_ibfk_2\" type=\"fk\" pk-ref=\"4\" fk-ref=\"3\"/><relation name=\"vente_ibfk_2\" fq-name=\"papyrus.vente.vente_ibfk_2\" type=\"fk\" pk-ref=\"4\" fk-ref=\"5\"/></relations></diagram>"
+					}
+				},
+				":vente": {
+					"properties": {
+						"erd.diagram.state": {
+							"serialized": "<diagram version=\"1\" name=\"empty\" time=\"202209211646\"><entities><data-source id=\"mysql8-1835b4307f1-2510ba45171671c9\"><entity id=\"1\" name=\"vente\" fq-name=\"papyrus.vente\" order=\"0\" color-bg=\"128,64,32\" x=\"20\" y=\"88\"><path name=\"papyrus\"/></entity><entity id=\"2\" name=\"fournis\" fq-name=\"papyrus.fournis\" order=\"1\" x=\"402\" y=\"26\"><path name=\"papyrus\"/></entity><entity id=\"3\" name=\"produit\" fq-name=\"papyrus.produit\" order=\"2\" x=\"396\" y=\"253\"><path name=\"papyrus\"/></entity></data-source></entities><relations><relation name=\"vente_ibfk_1\" fq-name=\"papyrus.vente.vente_ibfk_1\" type=\"fk\" pk-ref=\"2\" fk-ref=\"1\"/><relation name=\"vente_ibfk_2\" fq-name=\"papyrus.vente.vente_ibfk_2\" type=\"fk\" pk-ref=\"3\" fk-ref=\"1\"/></relations></diagram>"
+						}
+					}
+				}
+			},
+			"hotel": {
+				"@properties": {
+					"erd.diagram.state": {
+						"serialized": "<diagram version=\"1\" name=\"empty\" time=\"202209271044\"><entities><data-source id=\"mysql8-1835b4307f1-2510ba45171671c9\"><entity id=\"1\" name=\"chambre\" fq-name=\"hotel.chambre\" order=\"0\" x=\"739\" y=\"66\"><path name=\"hotel\"/></entity><entity id=\"2\" name=\"client\" fq-name=\"hotel.client\" order=\"1\" x=\"155\" y=\"86\"><path name=\"hotel\"/></entity><entity id=\"3\" name=\"hotel\" fq-name=\"hotel.hotel\" order=\"2\" x=\"1018\" y=\"65\"><path name=\"hotel\"/></entity><entity id=\"4\" name=\"reservation\" fq-name=\"hotel.reservation\" order=\"3\" x=\"399\" y=\"65\"><path name=\"hotel\"/></entity><entity id=\"5\" name=\"station\" fq-name=\"hotel.station\" order=\"4\" x=\"1338\" y=\"62\"><path name=\"hotel\"/></entity></data-source></entities><relations><relation name=\"reservation_ibfk_1\" fq-name=\"hotel.reservation.reservation_ibfk_1\" type=\"fk\" pk-ref=\"1\" fk-ref=\"4\"/><relation name=\"reservation_ibfk_2\" fq-name=\"hotel.reservation.reservation_ibfk_2\" type=\"fk\" pk-ref=\"2\" fk-ref=\"4\"/><relation name=\"chambre_ibfk_1\" fq-name=\"hotel.chambre.chambre_ibfk_1\" type=\"fk\" pk-ref=\"3\" fk-ref=\"1\"/><relation name=\"hotel_ibfk_1\" fq-name=\"hotel.hotel.hotel_ibfk_1\" type=\"fk\" pk-ref=\"5\" fk-ref=\"3\"/></relations></diagram>"
+					}
+				}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}

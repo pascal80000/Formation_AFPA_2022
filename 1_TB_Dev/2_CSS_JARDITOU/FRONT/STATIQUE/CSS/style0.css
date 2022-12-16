@@ -1,0 +1,81 @@
+html {
+    width: 1024px;    
+    font-size: 20px;
+        font-family:'Times New Roman', Times, serif;
+        background-color: beige;
+        background-size: 1024px;
+}
+
+.style_1 {
+        font-family:'Courier New', Courier, monospace, 'Arial Narrow Bold', sans-serif;
+        font-size: 16px;
+}
+
+
+.style_2 {
+        font-family:'Courier New', Courier, monospace, 'Arial Narrow Bold', sans-serif;
+        font-size: 24px;
+}
+
+
+.style_3 {
+        font-family:'Courier New', Courier, monospace, 'Arial Narrow Bold', sans-serif;
+        font-size: 36px;
+}
+
+
+.style_4 {
+        font-family:'Courier New', Courier, monospace, 'Arial Narrow Bold', sans-serif;
+        font-size: 48px;
+}
+
+fieldset {
+        border-width: (10,20,30,40px);
+        background-color: rgb(145, 233, 202);
+        color: rgba(23, 56, 6, 0.911);width: 450px;        
+        border-radius: 10px;
+        border-color: rgb(201, 78, 8);
+}
+
+li {
+        background-color: rgba(255, 255, 0, 0.151);
+        align-content: center;
+}
+
+table {
+        background-color: rgb(241, 250, 227);
+        align-items: center;
+}
+
+h1 {
+        color: rgb(5, 49, 18);
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 60px;
+        text-shadow: 50px;
+}
+
+label {
+        color: rgb(54, 48, 145);
+        align-items:flex-start;
+
+}
+
+textarea {
+        color: aqua;
+}
+
+p {
+        padding: 1em;
+        border: 1px solid black;
+}
+
+
+.inline {
+        display: inline;
+}
+.block {
+        display: block;
+}
+.menu {
+        flex-direction: row;
+}

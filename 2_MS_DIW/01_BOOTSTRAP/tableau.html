@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--  Lien vers la feuille de style CSS de Bootstrap (toujours dans <head>)  -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+        crossorigin="anonymous">
+
+        <title> == TABLEAU == </title>
+</head>
+
+
+<body>
+
+  <div class="container-fluid">
+
+    <header class="row align-items-center">
+            <div class="row align-items-center">
+                <img class="col-3 ml-4 d-none d-lg-block"  src="../01_BOOTSTRAP/SRC/IMG/jarditou_logo.jpg" class="img-fluid" minwidth="100px" title="logo" alt="logo">
+                <h3 class="col-8 text-right d-none d-lg-block">Tout le jardin</h3>  
+            </div>
+    </header>
+
+
+
+
+      <nav class="row navbar navbar-expand-lg navbar-light bg-light align-items-left">
+
+          <span class="col-2 ">
+            <h4>Jarditou.com</h4>
+          </span>
+
+
+        <!-- Toggler/collapsible Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarHeader">
+          <span class="navbar-toggler-icon"></span>
+        </button> 
+        
+        
+            <div class="collapse navbar-collapse justify-content-between" id="NavbarHeader">
+              <ul class="col-2 navbar-nav">
+                <li class="nav-item">
+                  <a class="h5 nav-link" href="../01_BOOTSTRAP/index.html"><strong>Accueil</strong></a>
+                </li>
+                <li class="nav-item">
+                    <a class="h5 nav-link" href="../01_BOOTSTRAP/tableau.html">Tableau</a>
+                </li>
+                <li class="nav-item">
+                    <a class="h5 nav-link" href="../01_BOOTSTRAP/contact.html"">Contact</a>
+                </li>
+              </ul>
+              <div class="col-7">
+                <form class="form-inline justify-content-end">
+                  <input class="form-control" type="search" placeholder="Votre promotion" aria-label="Search">
+                  <button class="btn btn-outline-success ml-3" type="submit">Rechercher</button>
+                </form>
+              </div>
+            </div> 
+      </nav>
+
+
+      <div class="row">
+        <img class="col ml-3 mr-3" src="../01_BOOTSTRAP/SRC/IMG/promotion.jpg"  title="mettre un lien vers les promotions......" alt="Votre navigateur n'affiche pas l'image !"> 
+      </div>
+
+<!-- ================================================================================================== -->
+<!-- ================   E X E M P L E   D E   T A B L E A U         A  E F F A C E R    =============== -->
+<!-- ================================================================================================== -->
+<!-- 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+======================================================================================================= -->
+
+
+<table class="table table-bordered table-sm">  <!--====================================== NON FONCTIONNEL à voir -->
+    <thead>               <!---  =========================================== entête du tableau    ===== -->
+
+          <tr class="h2 thead-light">
+            <th scope="col">Photo</th>
+            <th scope="col">ID</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Libellé</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Couleur</th>
+        </tr>
+    </thead>
+
+      <tbody>             <!--  ============================================ corps du tableau     ===== -->
+        <tr class="table-warning">
+            <td><img src="../MS_DIW/SRC/IMG/7.jpg" width="100" alt="image"></td>
+            <td>7</td>
+            <td>Barbecues</td>
+            <td>Aramis
+            <td>110.00€</td>
+            <td>Brun</td>
+          </tr>  
+
+          <tr>
+            <td><img src="../MS_DIW/SRC/IMG/8.jpg" width="100" alt="image"></td>
+            <td>8</td>
+            <td>Barbecues</td>
+            <td>Athos</td>
+            <td>249.99€</td>
+            <td>Noir</td>
+          </tr>
+
+          <tr class="table-warning">
+            <td><img src="../MS_DIW/SRC/IMG/11.jpg" width="100" alt="image"></td>
+            <td>11</td>
+            <td>Barbecues</td>
+            <td>Clatronic</td>
+            <td>135.90€</td>
+            <td>Chrome</td>
+          </tr>  
+
+          <tr>
+            <td><img src="../MS_DIW/SRC/IMG/12.jpg" width="100" alt="image"></td>
+            <td>12</td>
+            <td>Barbecues</td>
+            <td>Camping</td>
+            <td>88.00€</td>
+            <td>Bois</td>
+          </tr>
+
+          <tr class="table-warning">
+            <td><img src="../MS_DIW/SRC/IMG/13.jpg" width="100" alt="image"></td>
+            <td>13</td>
+            <td>Brouette</td>
+            <td>Aramis</td>
+            <td>49.00€</td>
+            <td>Brun</td>
+          </tr>
+      </tbody>
+  </table>
+
+
+
+<footer>
+  <nav class="row navbar navbar-expand-lg navbar-dark bg-dark rounded m-2">
+    <!-- Toggler/collapsible Button -->
+        <button class="col-auto ml-2 navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarFooter">
+          <span class="navbar-toggler-icon"></span>
+        </button> 
+    
+    
+        <div class="collapse navbar-collapse justify-content-between rounded" id="NavbarFooter">
+          <ul class="col-4 navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="mentions.html">mentions légales</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="horaires.html">horaires</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="plan.html">plan du site</a>
+            </li>
+          </ul>
+        </div> 
+  </nav>
+</footer>
+
+        <!--  Ci-dessous -->
+        <!-- Les fichiers JS nécéssaires au Bootstrap, à placer à la fin du Body  ATTENTION : l'ordre des fichiers est à respecter (JQuery, Popper puis Bootstrap) -->
+        <!-- NB: Popper JS est optionnel ; il permet notamment de créer et de mettre en forme des infobulles (ex: messages d'erreur à l'utilisateur dans des formulaires)   -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  </div>  <!--   Fermeture du container   -->
+
+</body>
+
+</html>

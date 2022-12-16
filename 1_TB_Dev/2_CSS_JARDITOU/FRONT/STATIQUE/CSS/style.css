@@ -1,0 +1,225 @@
+/* affiche la banderole promo quelleque soit la taille de fenêtre */
+.promo {
+        width: 100%;
+}
+
+
+header_1 {
+        display: flex;
+        width: 30%;
+        min-width: 280px;
+        height: 100px;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0%;
+        background-color: white;
+        padding: 0px 0px 0px 0px;
+        
+}
+
+
+header_2 {
+        display: flex;
+        width: 70%;
+        height: 100px;
+        flex-direction: row;
+        justify-content:center;
+        align-content: center;
+        margin: 0%;
+        background-color: white;
+        padding: 45px 0px 0px 0px;
+}
+
+
+header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+}
+
+
+.logo {
+        max-width: 100%;
+        height: auto;
+        margin: 0%;
+}
+
+
+.slogan {
+        display: flex;
+        flex-direction: column;
+        margin: 0%;
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        align-content: flex-end;
+}
+
+
+.menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        background-color: black;
+        color: white;
+        padding: 0.5%;
+}
+
+
+h1 {
+        background-color: rgb(26, 187, 166);
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 40px;
+        text-shadow: 50px;
+        margin: 0%;
+}
+
+
+div_1 {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        font-size: 14;
+        overflow: auto;
+        justify-items: left;
+        background-color: beige;
+        padding: 1cm;
+        font-family: Arial, Helvetica, sans-serif;
+}
+
+
+div_2 {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        font-size: 14;
+        background-color: bisque;
+        overflow: auto;
+        justify-items: right;
+        padding: 15px 25px 15px 25px;
+        font-family: Arial, Helvetica, sans-serif;
+}
+
+
+div {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+}
+
+
+fieldset {
+        border-width: (10, 20, 30, 40px);
+        background-color: rgb(145, 233, 202);
+        color: black;
+        width: 450px;
+        border-radius: 10px;
+        border-color: rgb(201, 78, 8);
+}
+
+
+table {
+        width: 35%;
+        align-content: center;
+        }
+
+
+label {
+        color: black;
+        align-items: flex-start;
+        font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+
+/*==============================================================================================*/
+/*                                                                                              */
+/*      ci-dessous, les css pour écrans inferieurs à 768px                                      */
+/*                                                                                              */
+/*==============================================================================================*/
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) 
+{
+        body {line-height: 1.2;}
+        
+        header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+        }
+        div_1 {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                font-size: auto;
+                overflow: auto;
+                justify-items: auto;
+                background-color: beige;
+                padding: 0.2cm;
+                font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        
+        .menu {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                font-size:xx-large;
+                justify-items: center;
+                align-items: center;
+                background-color: black;
+                color: white;
+        }
+
+        .menu2 {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                font-size:small;
+                justify-items: center;
+                align-items: center;
+                background-color: black;
+                color: white;
+        }
+
+
+
+        div_2 {display: none;}
+
+        header_2 {display: none;}
+
+
+        fieldset {
+                border-width:unset;
+                background-color: rgb(243, 242, 191);
+                color: black;
+                width:auto;
+                border-radius: 5px;
+                border-color: rgb(24, 224, 57);
+        }
+        
+        table {
+                width: 100%;
+                align-content: center;
+                }
+
+        h1 {
+                display: flex;
+                font-size: 25px;
+                justify-content: center;
+        }
+
+}
+
+
+

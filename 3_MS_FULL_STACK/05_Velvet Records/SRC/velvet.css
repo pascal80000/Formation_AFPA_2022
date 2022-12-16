@@ -1,0 +1,48 @@
+.liste{
+    font-size: xx-large;
+}
+
+.conteneur-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(1,300px);
+    border: 8px solid red;
+    background-color: rgb(214, 213, 132);
+    margin: 10px;
+}
+
+.alignitemsstretch{
+    align-items: stretch;
+}
+
+.conteneur{
+    width: 200px;
+    border: 2px solid black;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+figure{
+    border: 2px solid #333;
+    padding: 5px;
+    width: 200px;
+}
+
+.wraper{
+    display: grid;
+    grid-template-columns: repeat(2fr,1fr)
+    grid-template-areas "a b c"". . ...";
+}
+
+.item1{
+    grid-area: a;
+}
+
+.item2{
+    grid-area: b;
+}
+
+.item3{
+    grid-area: c;
+}
+

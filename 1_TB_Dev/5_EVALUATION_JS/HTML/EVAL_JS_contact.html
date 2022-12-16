@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="description" content="Description de mon site" />
+    <title>Eval contact</title>
+    <link rel="stylesheet" href="../CSS/style.css" type="text/css">
+</head>
+
+
+<body>
+
+
+  <header>
+    <header_1>
+      <img class="logo" src="../SRC/images/jarditou_logo.jpg" width="300" title="Bienvenue ici !!!!!" alt="LOGO">
+    </header_1>
+    <header_2>
+      <p class="slogan">Tout pour le jardin</p>
+    </header_2>
+  </header>
+  
+  <nav class="menu">
+    <a class="menu" href="index.html">Accueil</a>
+    <a class="menu" href="Tableau.html">Tableau</a>
+    <a class="menu" href="Contact.html">Contact</a>
+  </nav>
+  
+  
+  <img class="promo" src="../SRC/images/promotion.jpg"  title="Bandeau promotions" > 
+  
+  
+  <h1>Contact</h1>
+  
+  <hr>
+  
+  
+  <p>* Ces zones sont obligatoires</p>
+  
+
+
+
+    <form action="http://bienvu.net/script.php" method="post" id="formulaire">
+
+        <fieldset>
+            <legend>Vos coordonnées</legend><!--             Titre de l'encadré  -->
+
+            
+              
+            <label for="nom">Nom*</label>
+            <input type="text" name="nom" id="nom" required><br><div id="div_nom" class = "div_error"></div>
+              
+
+            <label for="prenom">Prénom*</label>
+            <input type="text" name="prenom" id="prenom" required><br>
+            <div id="div_prenom" class="div_error"></div>
+              
+
+            <!-- <div id="div_genre" class="div_error"></div><a>Genre   * :</a><input type="radio" name="femme" value="femme" id="femme"> <a>Femme</a>
+            <input type="radio" name="homme" value="homme" id="homme"> <a>Homme</a><br>
+              </div> -->
+              
+
+            <div id="div_genre" class="div_error" required><a>Genre   * :</a><div_radios><input type="radio" name="femme" value="femme" id="femme"><a>Femme</a>
+            <input type="radio" name="homme" value="homme" id="homme"><a>Homme</a><br></div_radios>
+              </div>
+
+
+            <label for="naissance">Date de naissance*</label>
+            <input type="date" name="naissance" id="date" ><br>
+              <div id="div_date" class="div_error"></div>
+
+            <label for="codepostal">Code postal*</label>
+            <input type="number" name="codepostal" id="code"><br>
+              <div id="div_code" class="div_error"></div>
+
+            <label for="adresse">Adresse : </label>
+            <input type="text" name="adresse" id="adresse"><br>
+              <div id="div_adresse" class="div_error"></div>
+
+            <label for="ville">Ville : </label>
+            <input type="text" name="ville" id="ville"><br>
+              <div id="div_ville" class="div_error"></div>
+
+            <label for="email">Email* : </label>
+            <input type="email" name="email" id="email">
+              <div id="div_email" class="div_error"></div>
+
+        </fieldset>
+
+
+
+        <fieldset>
+          <legend>Votre demande</legend>
+            <label for="sujet">Veuillez sélectionner un sujet : </label>
+              <select name="sujet" id="sujet">
+                <option>Sélectionnez un sujet...</option>
+                <option>PAS CONTENT</option>
+                <option>trop cher</option>
+                <option>pas fiable</option>
+                <option>trop lourd</option>
+                <option>consomme trop</option>
+                <option>grillé </option>
+                <option>cramé </option>
+                <option>Remboursement</option>
+                <option>j'vais le dire à ma mère !</option>
+              </select><br>
+
+
+
+            <label for="texte">Votre question:</label>
+              <textarea id="texte" name="texte" rows="3" cols="40" placeholder="Saisir ici votre demande"> 
+              </textarea>
+        </fieldset>
+
+        <br>
+
+        
+        <input type="checkbox" name="check" id="check">
+        <label for="check">* J'accepte le traitement informatique de ce formulaire.</label><br><br>
+
+        
+        <input type="submit" id="ok" value = "Envoyer">   <input type="reset" value = "Annuler">
+
+
+    </form>
+
+
+    <footer>
+      <hr>
+      <nav class="menu">
+        <a class="menu2" href="mentions.html">Mentions légales</a>
+        <a class="menu2" href="horaires.html">Horaires</a>
+        <a class="menu2" href="plan.html">Plan du site</a>
+      </nav>
+  
+  
+    </footer>
+  
+
+
+
+
+
+
+<script src = "../SRC/JS/EVAL_JS_contact.js" ></script>
+
+</body>
+
+</html>
