@@ -34,6 +34,7 @@ public class TransCoder {
                         chaine.set(index)
                 cle.add (chaine.get( index));
                 }
+//màj test
 
 
 

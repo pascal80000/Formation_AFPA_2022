@@ -3,7 +3,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class ReadKeyTest {
-@Test
+
     public void readKeyTest() {
         // La clé cryptée donnée plus haut
         String keyCrypted = "6Qe0IsEEH1utWRe7UKzGMiDTytOB3HS1dEfIB4imna3IRHXHRn5ZrvKFEcPjmPgKYGuytG+gDAl1m2DdHalJQg==";
