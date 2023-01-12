@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="Mixer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="135.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.afpa.gui.MixerController">
+   <children>
+      <Slider fx:id="R_Slider" layoutX="37.0" layoutY="23.0" max="255.0" prefHeight="16.0" prefWidth="255.0" style="-fx-background-color: red;" />
+      <Slider fx:id="G_Slider" layoutX="37.0" layoutY="60.0" max="255.0" prefHeight="16.0" prefWidth="255.0" style="-fx-background-color: green;" />
+      <Slider fx:id="B_Slider" layoutX="37.0" layoutY="97.0" max="255.0" prefHeight="16.0" prefWidth="255.0" style="-fx-background-color: blue;" />
+      <Label fx:id="Melange" alignment="CENTER" contentDisplay="CENTER" layoutX="441.0" layoutY="31.0" prefHeight="74.0" prefWidth="120.0" text="Mélange" />
+      <TextField fx:id="R_Level" layoutX="322.0" layoutY="31.0" prefHeight="23.0" prefWidth="112.0" promptText="niveau de rouge" />
+      <TextField fx:id="G_Level" layoutX="321.0" layoutY="56.0" prefHeight="23.0" prefWidth="112.0" promptText="niveau de vert" />
+      <TextField fx:id="B_Level" layoutX="322.0" layoutY="82.0" prefHeight="23.0" prefWidth="112.0" promptText="niveau de bleu" />
+   </children>
+</AnchorPane>
