@@ -3,8 +3,19 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+
+import java.lang.Object;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.layout.Region;
+import javafx.scene.control.Control;
+import javafx.scene.control.TextInputControl;
+
+
+
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.converter.NumberStringConverter;
 
 public class MixerController {
 
@@ -26,22 +37,20 @@ public class MixerController {
         Label Melange;
 
 
-R_Slider.valueProperty().addListener(new ChangeListener<>() {
-    @Override
-    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-    }
-
-    final Number Rouge = R_Slider.getValue(new );
-
-    //String TRouge = (new String(Rouge.toString()));
-    public R_Level.promptText(Rouge.toString());
-
-});
+        return R_Slider.valueProperty().addListener(new ChangeListener<>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            }
 
 
+            Rouge =R_Slider.getValue();
+
+
+            //public R_Level.promptText(Rouge.toString());
+
+            String TRouge = NumberStringConverter.toString(Rouge);
 
 
 
-    }
-}
-   
+            R_Level.setText(TRouge);
+        }

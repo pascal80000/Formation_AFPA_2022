@@ -17,14 +17,14 @@
          <effect>
             <DropShadow />
          </effect></Slider>
-      <Slider fx:id="G_Slider" layoutX="37.0" layoutY="60.0" max="255.0" prefHeight="16.0" prefWidth="255.0" style="-fx-background-color: green;">
+      <Slider fx:id="G_Slider" layoutX="37.0" layoutY="60.0" max="255.0" onMouseReleased="#initialize" prefHeight="16.0" prefWidth="255.0" style="-fx-background-color: green;">
          <cursor>
             <Cursor fx:constant="W_RESIZE" />
          </cursor>
          <effect>
             <DropShadow />
          </effect></Slider>
-      <Slider fx:id="B_Slider" layoutX="37.0" layoutY="97.0" max="255.0" prefHeight="16.0" prefWidth="255.0" style="-fx-background-color: blue;">
+      <Slider fx:id="B_Slider" layoutX="37.0" layoutY="97.0" max="255.0" onMouseReleased="#initialize" prefHeight="16.0" prefWidth="255.0" style="-fx-background-color: blue;">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
