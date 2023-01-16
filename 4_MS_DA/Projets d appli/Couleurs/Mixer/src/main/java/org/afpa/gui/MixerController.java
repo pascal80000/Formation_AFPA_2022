@@ -1,21 +1,12 @@
 package org.afpa.gui;
+
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-
-import java.lang.Object;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.layout.Region;
-import javafx.scene.control.Control;
-import javafx.scene.control.TextInputControl;
-
-
-
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.converter.NumberStringConverter;
 
 public class MixerController {
 
@@ -28,29 +19,50 @@ public class MixerController {
     public TextField G_Level;
     public TextField B_Level;
 
-    public void initialize(){
-
-        int Rouge, Vert, Bleu;
-        String TRouge, TVert, TBleu;
+    public void initialize() {
 
         AnchorPane Mixer;
-        Label Melange;
+
+        public Number Rouge, Vert, Bleu;
+        R_Slider.valueProperty().addListener((ChangeListener<? super Number>) this);
+        G_Slider.valueProperty().addListener((ChangeListener<? super Number>) this);
+        B_Slider.valueProperty().addListener((ChangeListener<? super Number>) this);
 
 
-        return R_Slider.valueProperty().addListener(new ChangeListener<>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+        Rouge = Math.round(R_Slider.getValue());
+        Vert = Math.round(G_Slider.getValue());
+        Bleu = Math.round(B_Slider.getValue());
+
+
             }
+        };
+
+    //changeListener() -> updateMelange();
 
 
-            Rouge =R_Slider.getValue();
+    }
 
 
-            //public R_Level.promptText(Rouge.toString());
-
-            String TRouge = NumberStringConverter.toString(Rouge);
+     public void updateMelange() {
 
 
 
-            R_Level.setText(TRouge);
-        }
+         R_Slider.setOnMouseReleased(e -> R_Level.setText(String.valueOf(Rouge)));
+         G_Slider.setOnMouseReleased(e -> G_Level.setText(String.valueOf(Vert)));
+         B_Slider.setOnMouseReleased(e -> B_Level.setText(String.valueOf(Bleu)));
+
+
+         Melange.setStyle("-fx-background-color: rgb(" + Rouge + "," + Vert + "," + Bleu + "); -fx-background-radius: 13; --fx-border-color: yellow; -fx-border-width: 6; -fx-border-radius: 10");
+         //Melange.setStyle("-fx-background-color: rgb(66,99,55)");
+         // -fx-background-radius: 13; --fx-border-color: yellow; -fx-border-width: 6; -fx-border-radius: 10");
+     }
+
+
+
+
+    }
+
+
+
+
+
