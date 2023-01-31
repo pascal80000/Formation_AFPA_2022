@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="96.0" layoutY="14.0" text="BASE CLIENTS">
          <font>
@@ -16,21 +15,21 @@
             <InnerShadow />
          </effect>
       </Label>
-      <Button fx:id="FouBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#Fournisseurs" prefHeight="70.0" prefWidth="300.0" text="Fournisseurs">
+      <Button fx:id="FouBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="90.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#Fournisseurs" prefHeight="70.0" prefWidth="300.0" text="Fournisseurs">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="ProdBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="190.0" mnemonicParsing="false" onMouseClicked="#Produits" prefHeight="70.0" prefWidth="300.0" text="Produits">
+      <Button fx:id="ProdBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#Produits" prefHeight="70.0" prefWidth="300.0" text="Produits">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="CmdBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#Commandes" prefHeight="70.0" prefWidth="300.0" text="Commandes">
+      <Button fx:id="CmdBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="290.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#Commandes" prefHeight="70.0" prefWidth="300.0" text="Commandes">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button defaultButton="true" layoutX="45.0" layoutY="537.0" mnemonicParsing="false" text="Retour" />
+      <Button layoutX="45.0" layoutY="537.0" mnemonicParsing="false" text="Retour" />
    </children>
 </AnchorPane>
