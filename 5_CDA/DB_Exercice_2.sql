@@ -117,6 +117,12 @@ ALTER TABLE Client CHANGE nom_client nom_cli VARCHAR(50);
 ALTER TABLE Client CHANGE prenom_client pre_cli VARCHAR(50);
 ALTER TABLE Client CHANGE num_client num_cli INT NOT NULL;
 
+
+
+
+
+
+
 /* Réécriture des contraintes !!!   INUTILE, c'est automatique.
 
 

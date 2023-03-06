@@ -1,6 +1,29 @@
-DROP DATABASE IF EXISTS papyrus;
+/*DROP DATABASE IF EXISTS papyrus;
 CREATE DATABASE papyrus;
-USE papyrus;
+USE papyrus;*/
+
+
+
+	DROP USER IF EXISTS 'admin'@'localhost';
+    DROP USER IF EXISTS 'util1'@'localhost';
+    DROP USER IF EXISTS 'util2'@'localhost';
+    DROP USER IF EXISTS 'util3'@'localhost';
+    
+    CREATE USER 'admin'@'localhost' IDENTIFIED BY '1122';
+    CREATE USER 'util1'@'localhost' IDENTIFIED BY '1111';
+    CREATE USER 'util2'@'localhost' IDENTIFIED BY '2222';
+    CREATE USER 'util3'@'localhost' IDENTIFIED BY '3333';
+
+    GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+    GRANT ALL PRIVILEGES ON papyrus.* TO 'util1'@'localhost';
+    GRANT SELECT, INSERT, UPDATE ON papyrus.* TO 'util2'@'localhost';
+    GRANT SELECT ON papyrus.fournis TO 'util3'@'localhost';
+
+    FLUSH PRIVILEGES;
+
+
+
+
 
 
 CREATE TABLE `fournis` (
@@ -11,7 +34,6 @@ CREATE TABLE `fournis` (
   `vilfou` varchar(30) NOT NULL,
   `confou` varchar(15) NOT NULL,
   `satisf` tinyint(4) DEFAULT NULL, 
-  CHECK (`satisf` >=0 AND `satisf` <=10),
   PRIMARY KEY (`numfou`)
 );
 
@@ -167,24 +189,8 @@ INSERT INTO `vente` (`codart`, `numfou`, `delliv`, `qte1`, `prix1`, `qte2`, `pri
 
 
 
-    CREATE INDEX numfou ON fournis(numfou ASC);
+	CREATE INDEX numfou ON fournis(numfou ASC);
     CREATE INDEX numcom ON entcom(numcom ASC);
 
 
-	DROP USER IF EXISTS 'admin'@'localhost';
-    DROP USER IF EXISTS 'user1'@'localhost';
-    DROP USER IF EXISTS 'user2'@'localhost';
-    DROP USER IF EXISTS 'user3'@'localhost';
-    
-    CREATE USER 'admin'@'localhost' IDENTIFIED BY '1122';
-    CREATE USER 'util1'@'localhost' IDENTIFIED BY '1111';
-    CREATE USER 'util2'@'localhost' IDENTIFIED BY '2222';
-    CREATE USER 'util3'@'localhost' IDENTIFIED BY '3333';
-
-    GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
-    GRANT ALL PRIVILEGES ON papyrus.* TO 'user1'@'localhost';
-    GRANT SELECT, INSERT, UPDATE ON papyrus.* TO 'user2'@'localhost';
-    GRANT SELECT ON papyrus.fournis TO 'user3'@'localhost';
-
-    FLUSH PRIVILEGES;
 
