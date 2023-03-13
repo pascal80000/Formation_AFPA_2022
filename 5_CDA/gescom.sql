@@ -3,11 +3,11 @@ CREATE DATABASE gescom;
 USE gescom;
 
 
-DROP TABLE IF EXISTS products;
+/*DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS orders; 
 DROP TABLE IF EXISTS details;
 DROP TABLE IF EXISTS suppliers;
-DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS customers;*/
 
 CREATE TABLE orders(
     ord_id INT(4) NOT NULL AUTO_INCREMENT,

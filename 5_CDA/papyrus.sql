@@ -1,6 +1,8 @@
-/*DROP DATABASE IF EXISTS papyrus;
+
+DROP DATABASE IF EXISTS papyrus;
 CREATE DATABASE papyrus;
-USE papyrus;*/
+
+USE papyrus;
 
 
 
@@ -20,7 +22,6 @@ USE papyrus;*/
     GRANT SELECT ON papyrus.fournis TO 'util3'@'localhost';
 
     FLUSH PRIVILEGES;
-
 
 
 
@@ -46,6 +47,8 @@ INSERT INTO `fournis` (`numfou`, `nomfou`, `ruefou`, `posfou`, `vilfou`, `confou
 	(9180, 'HURRYTAPE', '68 boulevard des octets', '78440', 'Dumpville', 'Track', 0),
 	(10127, 'FOURNITOU', '30 allée des chaumières', '78440', 'Dumpville', 'Bobby', 3);
 
+
+
 CREATE TABLE `produit` (
   `codart` char(4) NOT NULL,
   `libart` varchar(30) NOT NULL,
@@ -55,7 +58,6 @@ CREATE TABLE `produit` (
   `unimes` char(5) NOT NULL,
   PRIMARY KEY (`codart`)
 ) ;
-
 
 INSERT INTO `produit` (`codart`, `libart`, `stkale`, `stkphy`, `qteann`, `unimes`) VALUES
 	('B001', 'Bande magnétique 1200', 20, 87, 240, 'unite'),
@@ -86,7 +88,6 @@ CREATE TABLE `entcom` (
   CONSTRAINT `entcom_ibfk_1` FOREIGN KEY (`numfou`) REFERENCES `fournis` (`numfou`)
 );
 
-
 INSERT INTO `entcom` (`numcom`, `obscom`, `datcom`, `numfou`) VALUES
 	(70010, '', '2018-04-23 15:59:51', 120),
 	(70011, 'Commande urgente', '2020-05-21 17:32:43', 540),
@@ -114,7 +115,6 @@ CREATE TABLE `ligcom` (
   CONSTRAINT `ligcom_ibfk_1` FOREIGN KEY (`numcom`) REFERENCES `entcom` (`numcom`),
   CONSTRAINT `ligcom_ibfk_2` FOREIGN KEY (`codart`) REFERENCES `produit` (`codart`)
 );
-
 
 INSERT INTO `ligcom` (`numcom`, `numlig`, `codart`, `qtecde`, `priuni`, `qteliv`, `derliv`) VALUES
 	(70010, 1, 'I100', 3000, 470, 3000, '2018-04-15'),
@@ -156,7 +156,6 @@ CREATE TABLE `vente` (
   CONSTRAINT `vente_ibfk_1` FOREIGN KEY (`numfou`) REFERENCES `fournis` (`numfou`),
   CONSTRAINT `vente_ibfk_2` FOREIGN KEY (`codart`) REFERENCES `produit` (`codart`)
 ) ;
-
 
 INSERT INTO `vente` (`codart`, `numfou`, `delliv`, `qte1`, `prix1`, `qte2`, `prix2`, `qte3`, `prix3`) VALUES
 	('B001', 8700, 15, 0, 150, 50, 145, 100, 140),
