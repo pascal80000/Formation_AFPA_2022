@@ -1,4 +1,4 @@
--- Active: 1679299363968@@127.0.0.1@3306
+-- Active: 1679299363968@@127.0.0.1@3306@papyrus
 
 DROP DATABASE IF EXISTS papyrus;
 CREATE DATABASE papyrus;
@@ -17,7 +17,7 @@ USE papyrus;
     CREATE USER 'util2'@'localhost' IDENTIFIED BY '2222';
     CREATE USER 'util3'@'localhost' IDENTIFIED BY '3333';
 
-    GRANT ALL PRIVILEGES ON papyrus.* TO 'admin'@'localhost';
+    GRANT ALL PRIVILEGES ON papyrus.* TO 'admin'@'localhost'; -- WITH GRANT OPTION;
     GRANT ALL PRIVILEGES ON papyrus.* TO 'util1'@'localhost';
     GRANT SELECT, INSERT, UPDATE ON papyrus.* TO 'util2'@'localhost';
     GRANT SELECT ON papyrus.fournis TO 'util3'@'localhost';
@@ -92,7 +92,7 @@ INSERT INTO `entcom` (`numcom`, `obscom`, `datcom`, `numfou`) VALUES
 	(70010, '', '2018-04-23 15:59:51', 120),
 	(70011, 'Commande urgente', '2018-04-23 15:59:51', 540),
 	(70020, '', '2018-04-23 15:59:51', 9120),
-0.........	(70025, 'Commande urgente', '2018-04-23 15:59:51', 9150),
+	(70025, 'Commande urgente', '2018-04-23 15:59:51', 9150),
 	(70210, 'Commande cadencée', '2018-04-23 15:59:51', 120),
 	(70250, 'Commande cadencée', '2018-04-23 15:59:51', 8700),
 	(70300, '', '2018-04-23 15:59:51', 9120),

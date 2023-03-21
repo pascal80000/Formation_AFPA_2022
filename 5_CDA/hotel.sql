@@ -1,4 +1,4 @@
--- Active: 1679299363968@@127.0.0.1@3306@papyrus
+-- Active: 1679405822381@@127.0.0.1@3306@hotel
 DROP DATABASE IF EXISTS hotel;
 
 CREATE DATABASE hotel; 
@@ -10,7 +10,7 @@ CREATE TABLE station (
 	sta_altitude INT
 );
 
-CREATE TABLE hotel (
+CREATE TABLE hotels (
 	hot_id 			INT AUTO_INCREMENT NOT NULL,
 	hot_sta_id 		INT NOT NULL,
 	hot_nom 		VARCHAR(50) NOT NULL,
@@ -27,11 +27,11 @@ CREATE TABLE chambre (
 	cha_numero INT NOT NULL,
 	cha_capacite INT NOT NULL,
 	cha_type INT NOT NULL,
-	FOREIGN KEY (cha_hot_id) REFERENCES hotel(hot_id),
+	FOREIGN KEY (cha_hot_id) REFERENCES hotels(hot_id),
 	PRIMARY KEY (cha_id)
 );
 
-CREATE TABLE client (
+CREATE TABLE clients (
 	cli_id INT NOT NULL AUTO_INCREMENT ,
 	cli_nom VARCHAR(50),
 	cli_prenom VARCHAR(50),
@@ -50,7 +50,7 @@ CREATE TABLE reservation (
 	res_prix DECIMAL(6,2) NOT NULL,
 	res_arrhes DECIMAL(6,2),
 	FOREIGN KEY (res_cha_id) REFERENCES chambre(cha_id),
-	FOREIGN KEY (res_cli_id) REFERENCES client(cli_id),
+	FOREIGN KEY (res_cli_id) REFERENCES clients(cli_id),
 	PRIMARY KEY (res_id)
 );
 
@@ -58,13 +58,13 @@ INSERT INTO station (sta_id, sta_nom, sta_altitude) VALUES (1, 'La Montagne', 25
 INSERT INTO station (sta_id, sta_nom, sta_altitude) VALUES (2, 'Le Sud', 200);
 INSERT INTO station (sta_id, sta_nom, sta_altitude) VALUES (3, 'La Plage', 10);
 
-INSERT INTO hotel (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (1, 1, 'Le Magnifique', 3, 'rue du bas', 'Pralo');
-INSERT INTO hotel (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (2, 1, 'Hotel du haut', 1, 'rue du haut', 'Pralo');
-INSERT INTO hotel (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (3, 2, 'Le Narval', 3, 'place de la liberation', 'Vonten');
-INSERT INTO hotel (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (4, 2, 'Les Pissenlis', 4, 'place du 14 juillet', 'Bretou');
-INSERT INTO hotel (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (5, 2, 'RR Hotel', 5, 'place du bas', 'Bretou');
-INSERT INTO hotel (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (6, 2, 'La Brique', 2, 'place du haut', 'Bretou');
-INSERT INTO hotel (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (7, 3, 'Le Beau Rivage', 3, 'place du centre', 'Toras');
+INSERT INTO hotels (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (1, 1, 'Le Magnifique', 3, 'rue du bas', 'Pralo');
+INSERT INTO hotels (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (2, 1, 'Hotel du haut', 1, 'rue du haut', 'Pralo');
+INSERT INTO hotels (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (3, 2, 'Le Narval', 3, 'place de la liberation', 'Vonten');
+INSERT INTO hotels (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (4, 2, 'Les Pissenlis', 4, 'place du 14 juillet', 'Bretou');
+INSERT INTO hotels (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (5, 2, 'RR Hotel', 5, 'place du bas', 'Bretou');
+INSERT INTO hotels (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (6, 2, 'La Brique', 2, 'place du haut', 'Bretou');
+INSERT INTO hotels (hot_id, hot_sta_id, hot_nom, hot_categorie, hot_adresse, hot_ville) VALUES (7, 3, 'Le Beau Rivage', 3, 'place du centre', 'Toras');
 
 INSERT INTO chambre (cha_numero, cha_hot_id, cha_capacite, cha_type) VALUES (001, 1, 2, 1);
 INSERT INTO chambre (cha_numero, cha_hot_id, cha_capacite, cha_type) VALUES (002, 1, 3, 1);
@@ -130,13 +130,13 @@ INSERT INTO chambre (cha_numero, cha_hot_id, cha_capacite, cha_type) VALUES (201
 INSERT INTO chambre (cha_numero, cha_hot_id, cha_capacite, cha_type) VALUES (202, 7, 5, 1);
 INSERT INTO chambre (cha_numero, cha_hot_id, cha_capacite, cha_type) VALUES (203, 7, 5, 1);
 
-INSERT INTO client (cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Doe', 'John', '', 'LA');
-INSERT INTO client (cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Homme', 'Josh', '', 'Palm Desert');
-INSERT INTO client (cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Paul', 'Weller', '', 'Londre');
-INSERT INTO client (cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('White', 'Jack', '', 'Detroit');
-INSERT INTO client (cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Claypool', 'Les', '', 'San Francisco');
-INSERT INTO client (cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Squire', 'Chris', '', 'Londre');
-INSERT INTO client (cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Wood', 'Ronnie', '', 'Londre');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Doe', 'John', '', 'LA');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Homme', 'Josh', '', 'Palm Desert');
+INSERT INTO clients (ccli_id, li_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Paul', 'Weller', '', 'Londre');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('White', 'Jack', '', 'Detroit');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Claypool', 'Les', '', 'San Francisco');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Squire', 'Chris', '', 'Londre');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Wood', 'Ronnie', '', 'Londre');
 
 INSERT INTO reservation (res_cha_id, res_cli_id, res_date, res_date_debut, res_date_fin, res_prix, res_arrhes) VALUES (1, 1, '2017-01-10', '2017-07-01', '2017-07-15', 2400, 800);
 INSERT INTO reservation (res_cha_id, res_cli_id, res_date, res_date_debut, res_date_fin, res_prix, res_arrhes) VALUES (2, 2, '2017-01-10', '2017-07-01', '2017-07-15', 3400, 100);

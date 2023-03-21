@@ -1,3 +1,4 @@
+-- Active: 1679299363968@@127.0.0.1@3306@filrouge
 DROP DATABASE IF EXISTS filrouge;
 CREATE DATABASE filrouge;
 USE filrouge;
@@ -9,7 +10,7 @@ CREATE TABLE Clients(
    com_cli VARCHAR(50) NOT NULL,
    cde_cli VARCHAR(50) NOT NULL,
    adr_cli VARCHAR(50),
-   typ_cli LOGICAL,
+   typ_cli BOOLEAN,
    rem_cli DECIMAL(4,2),
    PRIMARY KEY(num_cli)
 );
@@ -38,7 +39,7 @@ CREATE TABLE Produits(
    pra_pdt DECIMAL(7,2),
    pvp_pdt DECIMAL(7,2),
    pvi_pdt DECIMAL(7,2),
-   vue_pdt LOGICAL,
+   vue_pdt BOOLEAN,
    stk_pdt SMALLINT,
    img_pdt VARCHAR(50),
    rff_pdt VARCHAR(50),
@@ -76,3 +77,74 @@ CREATE TABLE Panier(
    FOREIGN KEY(ref_pdt) REFERENCES Produits(ref_pdt),
    FOREIGN KEY(num_cde) REFERENCES Commandes(num_cde)
 );
+
+
+
+
+-- ===========================================================
+-- ======  CREATION DES INDEX  ===============================
+-- ===========================================================
+
+CREATE INDEX ref_pdt ON Produits(ref_pdt ASC);  -- Index Produits par ref.
+
+CREATE INDEX num_cde ON Commandes(num_cde ASC);
+
+CREATE INDEX num_cli ON Clients(num_cli ASC);
+
+CREATE INDEX id_fou ON Fournisseurs(id_fou ASC);
+
+
+
+
+--  =========================================================
+--  ===========  CREATION DES DROITS  =======================
+--  =========================================================
+
+-- utilisateur: admin = tous les droits sur la base
+DROP USER 'admin'@'localhost';
+
+CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY '1122';
+GRANT ALL PRIVILEGES on FilRouge.* TO 'admin'@'localhost' WITH GRANT OPTION;
+
+-- utilisateur Gestionnaire de Produits
+CREATE USER IF NOT EXISTS 'GestProd'@'localhost' IDENTIFIED BY 'GestProd';
+GRANT SELECT, CREATE, DROP, UPDATE on `Produits` TO 'GestProd'@'localhost';
+
+-- autres à définir...
+
+
+
+FLUSH PRIVILEGES;
+
+
+
+
+-- =============================================================
+-- ========  ALIMENTATION DE LA BASE  ==========================
+-- =============================================================
+USE filrouge;
+
+DROP TABLE IF EXISTS `Clients`;
+
+INSERT INTO `Clients` VALUES
+(1020001,"Client 1"     ,"Commercial 1"   ,"2023-01-01-001","Adresse du client 1"               ,1,0),
+(1020002,"Client 2"     ,"Commercial 2"   ,"2023-01-01-002","Adresse du client 2"               ,1,5),
+(1020003,"Stella Fulton","Jolene White"   ,"2022-01-22-001","Appartement448-8320 Vehicula Av."  ,0,11),
+(1020004,"Alyssa Hebert","Ori Lang"       ,"2022-02-21-005","9920 Eleifend, Route"              ,1,9),
+(1020005,"Hilda Wheeler","Cyrus Holder"   ,"2021-01-02-001","488-1312 Sollicitudin Rue"         ,0,13),
+(1020006,"Davis Riley"  ,"Colleen Langley","2022-11-01-001","3196 Rutrum Av."                   ,0,11),
+(1020007,"Callum Howe"  ,"Jillian Lowery" ,"2022-08-10-001","CP 389, 7501 Fusce Avenue"         ,0,7);
+
+
+
+INSERT INTO `Fournisseurs` VALUES
+(20000,"Erasmus O'donnell","Appartement175-6496 Erat, Rue"),
+(20001,"Shana Lindsey","CP 455, 1063 Pede, Rue"),
+(20002,"Imogene Sherman","2601 In Route"),
+(20003,"Jin Klein","5580 Donec Rue"),
+(20004,"Odysseus Joseph","9439 Nisi. Av."),
+(20005,"Hector Joyner","805-6084 Luctus Ave"),
+(20006,"Cynthia Reynolds","Appartement606-3831 Arcu Rue"),
+(20007,"Dacey Hopkins","Appartement259-3766 Donec Impasse"),
+(20008,"Jasmine Parks","642-9273 Semper, Av."),
+(20009,"Travis Ward","Appartement899-1647 Auctor Ave");
