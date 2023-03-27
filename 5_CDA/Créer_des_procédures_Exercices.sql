@@ -93,16 +93,21 @@ CREATE PROCEDURE CA_Fournisseur(
 )
 
 
-SELECT numero INTO fournis.numfou, 
-
+SELECT numero INTO fournis.numfou, nomfou, SUM(priuni*qteliv)
+FROM entcom
+JOIN ligcom ON entcom.numcom = ligcom.numcom
+JOIN fournis ON ligcom.numcom = fournis.numfou
 
 
 END $$
+
 DELIMITER ;
 
 
 CALL CA_Fournisseur(120, 1988);
 
+
+DROP PROCEDURE CA_Fournisseur
 
 
 
@@ -134,7 +139,7 @@ END |
 
 DELIMITER ;
 
-CALL ajoutFournis(2222, 'TRUQUEUR','rue de l\'arnaque','60099','PAQUITO','tru fils','1');
+CALL ajoutFournis(2228, 'TRUQUEUR','rue de l\'arnaque','60099','PAQUITO','tru fils','1');
 
 SELECT *
 FROM fournis;

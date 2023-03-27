@@ -201,7 +201,7 @@ ORDER BY fournis.nomfou;
 
 -- 11. Sortir les produits des commandes ayant le mot "urgent' en observation?
 
-SELECT DISTINCT produit.codart, libart  /*, obscom*/
+SELECT DISTINCT produit.codart, libart, obscom
 FROM produit,ligcom,entcom
 WHERE obscom LIKE '%urgen%'
 ORDER BY codart;
@@ -249,8 +249,9 @@ GROUP BY entcom.numcom;
 --     premier caractère commence par R). On affichera le libellé de l’article
 --     et prix1
 
-SELECT codart, libart
-FROM produit, vente
+SELECT codart, libart                     -- A REVOIR
+FROM produit
+JOIN vente ON produit.codart = vente.codart
 WHERE (MIN(prix1)<(MIN(prix1)WHERE LEFT(libart,1)='r'));
 
 

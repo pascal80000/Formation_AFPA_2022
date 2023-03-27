@@ -130,13 +130,13 @@ INSERT INTO chambre (cha_numero, cha_hot_id, cha_capacite, cha_type) VALUES (201
 INSERT INTO chambre (cha_numero, cha_hot_id, cha_capacite, cha_type) VALUES (202, 7, 5, 1);
 INSERT INTO chambre (cha_numero, cha_hot_id, cha_capacite, cha_type) VALUES (203, 7, 5, 1);
 
-INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Doe', 'John', '', 'LA');
-INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Homme', 'Josh', '', 'Palm Desert');
-INSERT INTO clients (ccli_id, li_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Paul', 'Weller', '', 'Londre');
-INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('White', 'Jack', '', 'Detroit');
-INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Claypool', 'Les', '', 'San Francisco');
-INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Squire', 'Chris', '', 'Londre');
-INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES ('Wood', 'Ronnie', '', 'Londre');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES (1,'Doe', 'John', 'Adresse cli 1', 'LA');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES (2,'Homme', 'Josh', 'Adresse cli 2', 'Palm Desert');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES (3,'Paul', 'Weller', 'Adresse cli 3', 'Londre');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES (4,'White', 'Jack', 'Adresse cli 4', 'Detroit');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES (5,'Claypool', 'Les', 'Adresse cli 5', 'San Francisco');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES (6,'Squire', 'Chris', 'Adresse cli 6', 'Londre');
+INSERT INTO clients (cli_id, cli_nom, cli_prenom, cli_adresse, cli_ville) VALUES (7,'Wood', 'Ronnie', 'Adresse cli 7', 'Londre');
 
 INSERT INTO reservation (res_cha_id, res_cli_id, res_date, res_date_debut, res_date_fin, res_prix, res_arrhes) VALUES (1, 1, '2017-01-10', '2017-07-01', '2017-07-15', 2400, 800);
 INSERT INTO reservation (res_cha_id, res_cli_id, res_date, res_date_debut, res_date_fin, res_prix, res_arrhes) VALUES (2, 2, '2017-01-10', '2017-07-01', '2017-07-15', 3400, 100);
@@ -146,3 +146,13 @@ INSERT INTO reservation (res_cha_id, res_cli_id, res_date, res_date_debut, res_d
 INSERT INTO reservation (res_cha_id, res_cli_id, res_date, res_date_debut, res_date_fin, res_prix, res_arrhes) VALUES (4, 6, '2017-01-10', '2017-07-01', '2017-07-15', 2400, 780);
 INSERT INTO reservation (res_cha_id, res_cli_id, res_date, res_date_debut, res_date_fin, res_prix, res_arrhes) VALUES (4, 6, '2017-01-10', '2017-07-01', '2017-07-15', 500, 80);
 INSERT INTO reservation (res_cha_id, res_cli_id, res_date, res_date_debut, res_date_fin, res_prix, res_arrhes) VALUES (4, 1, '2017-01-10', '2017-07-01', '2017-07-15', 40, 0);
+
+
+-- Test : OK
+/* 
+
+SELECT *
+FROM chambre
+WHERE (cha_numero = 201);
+
+*/
