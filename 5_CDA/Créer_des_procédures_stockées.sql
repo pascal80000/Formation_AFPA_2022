@@ -12,8 +12,10 @@ DELIMITER ;
 CALL listeClients();
 
 --  =========  DANGER DE CHUTE !!!    ==============
-DROP PROCEDURE listeClients;
+-- DROP PROCEDURE listeClients;
 -- =================================================
+SHOW CREATE PROCEDURE listeClients;
+
 
 
 DELIMITER |

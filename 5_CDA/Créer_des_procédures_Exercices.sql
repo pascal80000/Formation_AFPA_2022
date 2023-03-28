@@ -10,28 +10,29 @@ DELIMITER |
 
 CREATE PROCEDURE Lst_fournis()
 BEGIN
-    SELECT numfou
+    SELECT DISTINCT numfou
     FROM entcom
     WHERE numfou != 0;
 END |
 
 DELIMITER ;
-;
+
 
 
 
 CALL Lst_fournis();
 
-|
+
 SHOW CREATE PROCEDURE Lst_fournis;
 
+/*
 
 SHOW PROCEDURE STATUS Lst_fournis;
 
 
 DROP PROCEDURE Lst_fournis;
 
-
+*/
 
 -- =======================================================
 -- ===========  EXERCICE 2   =============================

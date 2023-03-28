@@ -1,5 +1,6 @@
--- Active: 1679405822381@@127.0.0.1@3306@hotel
+-- Active: 1679405822381@@127.0.0.1@3306@papyrus
 
+USE hotel;
 
 insert into station (sta_nom, sta_altitude) values ('station du bas', 666);
 
@@ -35,17 +36,21 @@ CREATE TRIGGER modif_reservation AFTER UPDATE ON reservation
     END;
 
 
+DROP TRIGGER modif_reservation;
 
 
 -- Exercice 2. insert_reservation : 
 --             interdire l'ajout de réservation pour 
 --             les hôtels possédant déjà 10 réservations.
+CREATE TRIGGER insert_reservation AFTER INSERT ON reservation
+    FOR EACH ROW
+        BEGIN
+            IF (COUNT(reservation.res_date)>10)
+                        SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Max 10 réservations atteint !';
+    END;
 
 
-
-
-
-
+DROP TRIGGER insert_reservation;
 
 
 -- Exercice 3. insert_reservation2 : interdire les réservations si 
@@ -67,3 +72,68 @@ CREATE TRIGGER modif_reservation AFTER UPDATE ON reservation
 
 
 
+
+
+
+
+--  =============================================================
+--  ======= Exercice papyrus     ================================
+--  =============================================================
+
+
+USE papyrus;
+
+
+CREATE TABLE `articles_a_commander`
+    (
+    `codart` char(4),
+    `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    `qte` int(11),
+    `deja` int(11),
+    PRIMARY KEY (`codart`)
+    );
+
+
+--  ajout de la référence I120 dans la table produit.
+INSERT INTO `produit` (`codart`, `libart`, `stkale`, `stkphy`, `qteann`, `unimes`) 
+    VALUES
+        ('I120','nouveau i120', 5, 20, 0, 'unite');
+
+--  vérif de l'ajout ci-dessus = Ok
+SELECT * FROM produit
+    WHERE codart ='I120';
+
+--  vérif que la table 'article_a_commander' est bien créée = Ok
+SELECT * FROM articles_a_commander;
+
+
+
+
+-- CREATION du déclencheur
+
+CREATE TRIGGER a_commander AFTER UPDATE ON produit
+    FOR EACH ROW
+        BEGIN
+        --  Déclaration des VARIABLES
+            DECLARE phy INT(11);
+            DECLARE ale INT(11);
+
+            SELECT stkphy, stkale 
+            FROM produit
+            JOIN articles_a_commander ON produit.codart = articles_a_commander.codart;
+                SET phy = stkphy;
+                SET ale = stkale;
+                IF (phy<ale) THEN
+                    
+                        ajout=(ale-phy);
+                        UPDATE articles_a_commander
+                        SET qte=qte+ajout;
+                END IF;
+
+
+                
+        END;
+
+-- DROP TRIGGER a_commander;
+
+-- SHOW SESSION VARIABLES;
