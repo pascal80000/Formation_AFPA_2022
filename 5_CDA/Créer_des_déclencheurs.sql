@@ -111,20 +111,20 @@ SELECT * FROM articles_a_commander;
 
 -- CREATION du déclencheur
 
-CREATE TRIGGER a_commander AFTER UPDATE ON produit
+CREATE TRIGGER a_commander AFTER UPDATE ON `produit`
     FOR EACH ROW
         BEGIN
         --  Déclaration des VARIABLES
-            DECLARE phy INT(11);
-            DECLARE ale INT(11);
+            DECLARE phy, ale INT(11);
+            -- DECLARE ale INT(11);
 
             SELECT stkphy, stkale 
             FROM produit
             JOIN articles_a_commander ON produit.codart = articles_a_commander.codart;
                 SET phy = stkphy;
                 SET ale = stkale;
-                IF (phy<ale) THEN
-                    
+                IF (phy<ale) 
+                    THEN
                         ajout=(ale-phy);
                         UPDATE articles_a_commander
                         SET qte=qte+ajout;
@@ -137,3 +137,8 @@ CREATE TRIGGER a_commander AFTER UPDATE ON produit
 -- DROP TRIGGER a_commander;
 
 -- SHOW SESSION VARIABLES;
+
+-- GRANT ALL PRIVILEGES ON papyrus.* TO 'admin'@'localhost';
+-- FLUSH PRIVILEGES;
+
+-- mysqldump --user='admin'@'localhost' --password='1122' papyrus >bkp_papyrus_29_03_2023.sql

@@ -6,16 +6,15 @@
 -- ===  création d'une procédure stockée sans paramètre ==
 -- =======================================================
 
-DELIMITER |
 
 CREATE PROCEDURE Lst_fournis()
 BEGIN
     SELECT DISTINCT numfou
     FROM entcom
     WHERE numfou != 0;
-END |
+END;
 
-DELIMITER ;
+
 
 
 
@@ -25,14 +24,10 @@ CALL Lst_fournis();
 
 SHOW CREATE PROCEDURE Lst_fournis;
 
-/*
-
-SHOW PROCEDURE STATUS Lst_fournis;
-
 
 DROP PROCEDURE Lst_fournis;
 
-*/
+
 
 -- =======================================================
 -- ===========  EXERCICE 2   =============================
@@ -40,7 +35,6 @@ DROP PROCEDURE Lst_fournis;
 -- === avec un paramètre en entrée              ==========
 -- =======================================================
 
-DELIMITER \\
 
 CREATE PROCEDURE Lst_commandes(IN obs VARCHAR(50) )
 BEGIN
@@ -48,17 +42,14 @@ BEGIN
     FROM produit
     JOIN ligcom ON produit.codart = ligcom.codart
     JOIN entcom ON ligcom.numcom = entcom.numcom
-    WHERE obscom LIKE obs
-    ORDER BY codart;
-END \\
+    WHERE obscom LIKE obs;
+    
+END;
 
-DELIMITER ;
 
-DECLARE obs VARCHAR;
 
-SET @obs =  "%urgen%";
 
-SHOW obs;
+
 
 
 
