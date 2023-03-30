@@ -37,17 +37,11 @@ CALL listeClientParVille('LA');
 
 -- =========  DANGER DE CHUTE !!!    ==============
 
--- DROP PROCEDURE listeClientParVille;
+DROP PROCEDURE listeClientParVille;
 -- =================================================
 
 
---  SHOW PROCEDURE STATUS;
-
-
-
-   SELECT cli_id, cli_nom, cli_prenom, cli_ville 
-   FROM clients
-   WHERE clients.cli_ville='LA';
+SHOW PROCEDURE STATUS;
 
 
 

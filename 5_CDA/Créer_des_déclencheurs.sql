@@ -1,4 +1,4 @@
--- Active: 1679405822381@@127.0.0.1@3306@papyrus
+-- Active: 1679405822381@@127.0.0.1@3306@hotel
 
 USE hotel;
 
@@ -56,9 +56,12 @@ DROP TRIGGER insert_reservation;
 -- Exercice 3. insert_reservation2 : interdire les réservations si 
 --             le client possède déjà 3 réservations.
 
+/*CREATE TRIGGER insert_reservation2 BEFORE INSERT ON reservation
+    -- FOR EACH ROW
+        BEGIN
+            IF 
 
-
-
+*/
 
 
 
@@ -68,8 +71,13 @@ DROP TRIGGER insert_reservation;
 --             si ce total est supérieur à 50,
 --             on interdit l'insertion de la chambre.
 
+CREATE TRIGGER insert_chambre BEFORE INSERT ON chambre
 
-
+        BEGIN
+            SELECT SUM(cha_capacite) FROM chambre;
+            IF SUM(cha_capacite)>=500 THEN
+                                    SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Max capacité atteint !';
+    END;
 
 
 
@@ -134,7 +142,7 @@ CREATE TRIGGER a_commander AFTER UPDATE ON `produit`
                 
         END;
 
--- DROP TRIGGER a_commander;
+DROP TRIGGER a_commander;
 
 -- SHOW SESSION VARIABLES;
 
