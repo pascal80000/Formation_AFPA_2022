@@ -79,18 +79,12 @@ ORDER BY codart;
 
 
 DELIMITER $$
-CREATE PROCEDURE CA_Fournisseur(
-    IN numero INT,
-    IN annee INT
-)
-
-
-SELECT numero INTO fournis.numfou, nomfou, SUM(priuni*qteliv)
-FROM entcom
-JOIN ligcom ON entcom.numcom = ligcom.numcom
-JOIN fournis ON ligcom.numcom = fournis.numfou
-
-
+CREATE PROCEDURE CA_Fournisseur(IN numero INT, annee INT)
+BEGIN
+    SELECT numero INTO numfou, nomfou, SUM(priuni*qteliv)
+    FROM entcom
+    JOIN ligcom ON entcom.numcom = ligcom.numcom
+    JOIN fournis ON ligcom.numcom = fournis.numfou
 END $$
 
 DELIMITER ;

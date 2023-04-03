@@ -1,4 +1,4 @@
--- Active: 1679405822381@@127.0.0.1@3306@hotel
+-- Active: 1679405822381@@127.0.0.1@3306@papyrus
 
 USE hotel;
 
@@ -108,8 +108,7 @@ INSERT INTO `produit` (`codart`, `libart`, `stkale`, `stkphy`, `qteann`, `unimes
         ('I120','nouveau i120', 5, 20, 0, 'unite');
 
 --  vérif de l'ajout ci-dessus = Ok
-SELECT * FROM produit
-    WHERE codart ='I120';
+SELECT * FROM produit WHERE codart =("I120");
 
 --  vérif que la table 'article_a_commander' est bien créée = Ok
 SELECT * FROM articles_a_commander;
@@ -119,28 +118,22 @@ SELECT * FROM articles_a_commander;
 
 -- CREATION du déclencheur
 
-CREATE TRIGGER a_commander AFTER UPDATE ON `produit`
-    FOR EACH ROW
-        BEGIN
-        --  Déclaration des VARIABLES
-            DECLARE phy, ale INT(11);
-            -- DECLARE ale INT(11);
+CREATE TRIGGER a_commander AFTER UPDATE
+ON produit FOR EACH ROW
+    BEGIN
+
 
             SELECT stkphy, stkale 
-            FROM produit
-            JOIN articles_a_commander ON produit.codart = articles_a_commander.codart;
-                SET phy = stkphy;
-                SET ale = stkale;
-                IF (phy<ale) 
-                    THEN
-                        ajout=(ale-phy);
+            FROM produit;
+
+
+                IF (stkphy<stkale) 
+                --     THEN
                         UPDATE articles_a_commander
-                        SET qte=qte+ajout;
-                END IF;
+                        SET qte=(qte+(stkale-stkphy));
+                -- END IF;
 
-
-                
-        END;
+    END;
 
 DROP TRIGGER a_commander;
 
@@ -149,4 +142,6 @@ DROP TRIGGER a_commander;
 -- GRANT ALL PRIVILEGES ON papyrus.* TO 'admin'@'localhost';
 -- FLUSH PRIVILEGES;
 
--- mysqldump --user='admin'@'localhost' --password='1122' papyrus >bkp_papyrus_29_03_2023.sql
+-- mysqldump --user='admin'@'localhost' --password='code' papyrus >bkp_papyrus_29_03_2023.sql
+SHOW TRIGGERS;
+
