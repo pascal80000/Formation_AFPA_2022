@@ -1,4 +1,4 @@
--- Active: 1679299363968@@127.0.0.1@3306@filrouge
+-- Active: 1679405822381@@127.0.0.1@3306@filrouge
 DROP DATABASE IF EXISTS filrouge;
 CREATE DATABASE filrouge;
 USE filrouge;
@@ -148,3 +148,14 @@ INSERT INTO `Fournisseurs` VALUES
 (20007,"Dacey Hopkins","Appartement259-3766 Donec Impasse"),
 (20008,"Jasmine Parks","642-9273 Semper, Av."),
 (20009,"Travis Ward","Appartement899-1647 Auctor Ave");
+
+
+
+
+
+
+-- =======================================================================
+-- ===========   Rétablissement des noms de champs plus lisibles  ========
+-- ==========================05/04/2023===================================
+
+

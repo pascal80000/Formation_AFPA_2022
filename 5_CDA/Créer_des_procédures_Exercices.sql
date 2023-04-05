@@ -125,7 +125,7 @@ END |
 
 DELIMITER ;
 
-CALL ajoutFournis(2228, 'TRUQUEUR','rue de l\'arnaque','60099','PAQUITO','tru fils','1');
+CALL ajoutFournis(2228, 'TROCQUEUR','allée de l\'art','80019','PAQARITO','tru fils','3');
 
 SELECT *
 FROM fournis;

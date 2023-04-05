@@ -121,18 +121,18 @@ SELECT * FROM articles_a_commander;
 CREATE TRIGGER a_commander AFTER UPDATE
 ON produit FOR EACH ROW
     BEGIN
+        SELECT stkphy, stkale 
+        FROM produit
+        JOIN articles_a_commander ON produit.codart = articles_a_commander.codart
+            SET @diff = (15);
 
+                SELECT @diff;
 
-            SELECT stkphy, stkale 
-            FROM produit;
-
-
-                IF (stkphy<stkale) 
-                --     THEN
-                        UPDATE articles_a_commander
-                        SET qte=(qte+(stkale-stkphy));
-                -- END IF;
-
+            IF (@diff < 0) 
+                THEN 
+                    UPDATE articles_a_commander
+                    SET qte=(qte+(stkale-stkphy))
+            END IF;
     END;
 
 DROP TRIGGER a_commander;

@@ -1,3 +1,4 @@
+-- Active: 1679405822381@@127.0.0.1@3306@cp
 DROP DATABASE cp;
 
 CREATE DATABASE cp;
@@ -36,11 +37,11 @@ CREATE TABLE commande (
 DROP TABLE lignedecommande;
 
 CREATE TABLE lignedecommande (
-	id_ligne	    INT,
+	id_commande	    INT,
 	id_produit 		INT,
-	quantite 		INT,
 	prix		 	DOUBLE,
-	FOREIGN KEY (id_ligne) REFERENCES commande(id_commande),
+	quantite 		INT,
+	FOREIGN KEY (id_commande) REFERENCES commande(id_commande),
 	FOREIGN KEY (id_produit) REFERENCES produit(id_produit)
 );
 
@@ -62,17 +63,17 @@ INSERT INTO commande (id_client, date_commande, remise) VALUES (1, '2018-09-01',
 INSERT INTO commande (id_client, date_commande, remise) VALUES (2, '2018-09-01', 10);
 
 
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (2, 3, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (2, 2, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (2, 1, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (2, 5, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (2, 4, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (1, 3, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (1, 2, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (1, 1, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (3, 3, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (3, 2, 10, 2);
-INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (3, 2, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (2, 3, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (2, 2, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (2, 1, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (2, 5, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (2, 4, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (1, 3, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (1, 2, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (1, 1, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (3, 3, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (3, 2, 10, 2);
+INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (3, 2, 10, 2);
 
 
 
@@ -81,7 +82,7 @@ USE cp;
 -- ==================================================================
 CREATE PROCEDURE ajouter()
 BEGIN
-    INSERT INTO lignedecommande (id_ligne, id_produit, prix, quantite) VALUES (4, 2, 5, 6);
+    INSERT INTO lignedecommande (id_commande, id_produit, prix, quantite) VALUES (5, 12, 15, 15);
 END;
 
 DROP PROCEDURE ajouter;
@@ -96,8 +97,8 @@ CREATE TRIGGER maj_total AFTER INSERT ON lignedecommande
     BEGIN
         DECLARE id_c INT;
         DECLARE tot DOUBLE;
-        SET id_c = NEW.id_ligne;
-        SET tot = (SELECT sum(prix*quantite) FROM lignedecommande WHERE id_ligne = id_c); 
+        SET id_c = NEW.id_commande;
+        SET tot = (SELECT sum(prix*quantite) FROM lignedecommande WHERE id_commande = id_c); 
         UPDATE commande SET total=tot WHERE id_commande=id_c;
 END;
 

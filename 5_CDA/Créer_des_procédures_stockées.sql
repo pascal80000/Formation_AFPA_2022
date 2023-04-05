@@ -9,7 +9,7 @@ END;
 
 CALL listeClients();
 
---  =========  DANGER DE CHUTE !!!    ==============
+-- ==========  DANGER DE CHUTE !!!    ==============
 -- DROP PROCEDURE listeClients;
 -- =================================================
 SHOW CREATE PROCEDURE listeClients;
