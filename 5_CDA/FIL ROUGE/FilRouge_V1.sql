@@ -1,7 +1,7 @@
 -- Active: 1679405822381@@127.0.0.1@3306@filrouge
-DROP DATABASE IF EXISTS filrouge;
-CREATE DATABASE filrouge;
-USE filrouge;
+DROP DATABASE IF EXISTS filrouge_V1;
+CREATE DATABASE filrouge_V1;
+USE filrouge_V1;
 
 CREATE TABLE clients(
    num_client INT NOT NULL AUTO_INCREMENT,
@@ -18,12 +18,12 @@ CREATE TABLE clients(
 );
 
 CREATE TABLE fournisseurs(
-   id_fournisseur INT NOT NULL AUTO_INCREMENT,
+   if_fournisseur INT NOT NULL AUTO_INCREMENT,
    nom_fournisseur VARCHAR(50),
    adresse_fournisseur VARCHAR(255),
    CP_fournis VARCHAR(50),
    Ville_fournis VARCHAR(50),
-   PRIMARY KEY(id_fournisseur)
+   PRIMARY KEY(if_fournisseur)
 );
 
 CREATE TABLE commerciaux(
@@ -48,9 +48,9 @@ CREATE TABLE produits(
    visibilite_catalogue BOOLEAN,
    stock_produit SMALLINT,
    image_produit VARCHAR(50),
-   id_fournisseur INT NOT NULL,
+   if_fournisseur INT NOT NULL,
    PRIMARY KEY(ref_produit),
-   FOREIGN KEY(id_fournisseur) REFERENCES fournisseurs(id_fournisseur)
+   FOREIGN KEY(if_fournisseur) REFERENCES fournisseurs(if_fournisseur)
 );
 
 CREATE TABLE panier(
@@ -151,11 +151,11 @@ CREATE TABLE Consulter(
 );
 
 CREATE TABLE Visu_performances(
-   id_fournisseur INT,
+   if_fournisseur INT,
    ref_produit VARCHAR(50),
    nom_utilisateur VARCHAR(50),
-   PRIMARY KEY(id_fournisseur, ref_produit, nom_utilisateur),
-   FOREIGN KEY(id_fournisseur) REFERENCES fournisseurs(id_fournisseur),
+   PRIMARY KEY(if_fournisseur, ref_produit, nom_utilisateur),
+   FOREIGN KEY(if_fournisseur) REFERENCES fournisseurs(if_fournisseur),
    FOREIGN KEY(ref_produit) REFERENCES produits(ref_produit),
    FOREIGN KEY(nom_utilisateur) REFERENCES Tableau_de_bord(nom_utilisateur)
 );
@@ -166,13 +166,13 @@ CREATE TABLE Visu_performances(
 -- ======  CREATION DES INDEX  ===============================
 -- ===========================================================
 
-CREATE INDEX ref_produit ON produits(ref_produit ASC);  -- Index Produits par ref.
+CREATE INDEX ref_produit ON Produits(ref_produit ASC);  -- Index Produits par ref.
 
-CREATE INDEX num_commande ON commandes(num_commande ASC);
+CREATE INDEX num_commande ON Commandes(num_commande ASC);
 
-CREATE INDEX num_client ON clients(num_client ASC);
+CREATE INDEX num_client ON Clients(num_client ASC);
 
-CREATE INDEX id_fournisseur ON fournisseurs(id_fournisseur ASC);
+CREATE INDEX id_fournisseur ON Fournisseurs(id_fournisseur ASC);
 
 
 
@@ -206,42 +206,40 @@ FLUSH PRIVILEGES;
 USE filrouge;
 
 
+DROP TABLE IF EXISTS `Clients`;
 
-INSERT INTO `clients` VALUES
-(1020001,"Client 1"     , 1,"Commercial 1"   ,"Adresse du client 1",                52121,"ville_cli1", "xxxxxxxx",00.00, 1.5),
-(1020002,"Client 2"     , 1,"Commercial 2"   ,"Adresse du client 2",                29023,"ville_cli2", "xxxxxxxx",00.00, 1.5),
-(1020003,"Stella Fulton", 0,"Jolene White"   ,"Appartement448-8320 Vehicula Av.",   66232,"ville 3",    "xxxxxxxx",00.95, 1.5),
-(1020004,"Alyssa Hebert", 0,"Ori Lang"       ,"9920 Eleifend, Route",               78022,"ville 4",    "xxxxxxxx",00.80, 1.5),
-(1020005,"Hilda Wheeler", 0,"Cyrus Holder"   ,"488-1312 Sollicitudin Rue",          45000,"ville 5",    "xxxxxxxx",00.85, 1.3),
-(1020006,"Davis Riley"  , 0,"Colleen Langley","3196 Rutrum Av.",                    59100,"Roubaix",    "xxxxxxxx",00.80, 1.4),
-(1020007,"Callum Howe"  , 0,"Jillian Lowery" ,"CP 389, 7501 Fusce Avenue",          13001,"Marseille",  "xxxxxxxx",00.75, 1.6);
-
-
-
-
-INSERT INTO `fournisseurs` VALUES
-(20000,"Erasmus O'donnell", "Appartement175-6496 Erat, Rue",    02512, "Vilfournis1"),
-(20001,"Shana Lindsey",     "CP 455, 1063 Pede, Rue",           03258, "Vilfournis2"),
-(20002,"Imogene Sherman",   "2601 In Route",                    06222, "Vilfournis3"),
-(20003,"Jin Klein",         "5580 Donec Rue",                   55213, "Vilfournis4"),
-(20004,"Odysseus Joseph",   "9439 Nisi. Av.",                   76652, "Vilfournis5"),
-(20005,"Hector Joyner",     "805-6084 Luctus Ave",              48023, "Vilfournis6"),
-(20006,"Cynthia Reynolds",  "Appartement606-3831 Arcu Rue",     13110, "Vilfournis7"),
-(20007,"Dacey Hopkins",     "Appartement259-3766 Donec Impasse",08002, "Vilfournis8"),
-(20008,"Jasmine Parks",     "642-9273 Semper, Av.",             59120, "Vilfournis9"),
-(20009,"Travis Ward",       "Appartement899-1647 Auctor Ave",   62100, "Vilfournis0");
-
-
-INSERT INTO `commerciaux` VALUES
-("LeNomDuPremier",  "Client 1",     1),
-("LeSecondNom",     "Client le 2",  0),
-("DritteName",      "Client4",      0);
-
-
-INSERT INTO `produits` VALUES
-("Prod 00001","Ref Fournisseur","Nom prod 00001","libellé du produit","DEscriptif longgggggggggg","Catégorie xxx","sous_categ prod",01234.22,0,0,1,1000,"image prod 0001");
+INSERT INTO `Clients` VALUES
+(1020001,"Client 1"     ,"Commercial 1"   ,"2023-01-01-001","Adresse du client 1"               ,1,0),
+(1020002,"Client 2"     ,"Commercial 2"   ,"2023-01-01-002","Adresse du client 2"               ,1,5),
+(1020003,"Stella Fulton","Jolene White"   ,"2022-01-22-001","Appartement448-8320 Vehicula Av."  ,0,11),
+(1020004,"Alyssa Hebert","Ori Lang"       ,"2022-02-21-005","9920 Eleifend, Route"              ,1,9),
+(1020005,"Hilda Wheeler","Cyrus Holder"   ,"2021-01-02-001","488-1312 Sollicitudin Rue"         ,0,13),
+(1020006,"Davis Riley"  ,"Colleen Langley","2022-11-01-001","3196 Rutrum Av."                   ,0,11),
+(1020007,"Callum Howe"  ,"Jillian Lowery" ,"2022-08-10-001","CP 389, 7501 Fusce Avenue"         ,0,7);
 
 
 
+DROP TABLE IF EXISTS `Fournisseurs`;
+
+INSERT INTO `Fournisseurs` VALUES
+(20000,"Erasmus O'donnell","Appartement175-6496 Erat, Rue"),
+(20001,"Shana Lindsey","CP 455, 1063 Pede, Rue"),
+(20002,"Imogene Sherman","2601 In Route"),
+(20003,"Jin Klein","5580 Donec Rue"),
+(20004,"Odysseus Joseph","9439 Nisi. Av."),
+(20005,"Hector Joyner","805-6084 Luctus Ave"),
+(20006,"Cynthia Reynolds","Appartement606-3831 Arcu Rue"),
+(20007,"Dacey Hopkins","Appartement259-3766 Donec Impasse"),
+(20008,"Jasmine Parks","642-9273 Semper, Av."),
+(20009,"Travis Ward","Appartement899-1647 Auctor Ave");
+
+
+
+
+
+
+-- =======================================================================
+-- ===========   Rétablissement des noms de champs plus lisibles  ========
+-- ==========================05/04/2023===================================
 
 
