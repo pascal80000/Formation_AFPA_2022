@@ -76,7 +76,7 @@ CREATE TRIGGER insert_chambre BEFORE INSERT ON chambre
         BEGIN
             SELECT SUM(cha_capacite) FROM chambre;
             IF SUM(cha_capacite)>=500 THEN
-                                    SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Max capacité atteint !';
+                SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Max capacité atteint !';
     END;
 
 
