@@ -1,4 +1,4 @@
--- Active: 1679405822381@@127.0.0.1@3306@papyrus
+-- Active: 1679405822381@@127.0.0.1@3306@hotel
 
 USE hotel;
 
@@ -29,28 +29,32 @@ DROP TRIGGER insert_station;
 --             interdire la modification des réservations 
 --             (on autorise l'ajout et la suppression).
 
-CREATE TRIGGER modif_reservation AFTER UPDATE ON reservation
+CREATE OR REPLACE TRIGGER modif_reservation AFTER UPDATE ON reservation
     FOR EACH ROW
         BEGIN
         SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Impossible de modifier !';
     END;
 
 
-DROP TRIGGER modif_reservation;
+UPDATE reservation
+SET res_date = "2017-01-10"
+WHERE res_cli_id = "1";
+
 
 
 -- Exercice 2. insert_reservation : 
 --             interdire l'ajout de réservation pour 
 --             les hôtels possédant déjà 10 réservations.
-CREATE TRIGGER insert_reservation AFTER INSERT ON reservation
+CREATE OR REPLACE TRIGGER insert_reservation AFTER INSERT ON reservation
     FOR EACH ROW
         BEGIN
-            IF (COUNT(reservation.res_date)>10)
-                        SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Max 10 réservations atteint !';
-    END;
+            IF (COUNT(reservation.res_date)>100)
+                THEN SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Max 10 réservations atteint !';
+            END IF;
+        END;
 
-
-DROP TRIGGER insert_reservation;
+INSERT INTO reservation (res_cha_id, res_cli_id, res_date, res_date_debut, res_date_fin, res_prix, res_arrhes) VALUES
+(1,1,'2018-01-01', '2018-08-15', '2018-08-21', 3600, 10);
 
 
 -- Exercice 3. insert_reservation2 : interdire les réservations si 
