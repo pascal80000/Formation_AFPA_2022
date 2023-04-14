@@ -12,9 +12,7 @@
 
 SELECT `SupplierID`, `CompanyName`, `ContactName`, `ContactTitle`, `Phone`
 FROM suppliers
-
 WHERE Country = "France";
-
 
 
 
@@ -25,8 +23,6 @@ SELECT ProductID, ProductName, UnitPrice
 FROM products
 JOIN suppliers ON products.SupplierID = suppliers.SupplierID
 WHERE CompanyName = "Exotic Liquids";
-
-
 
 
 
@@ -44,9 +40,8 @@ ORDER BY somme DESC;
 
 
 
-
-
 --  4 - Liste des clients Français ayant plus de 10 commandes :
+
 SELECT customers.CustomerID, CompanyName, Country, (COUNT (OrderID))
 FROM customers
 JOIN orders ON customers.CustomerID = orders.CustomerID
@@ -56,10 +51,8 @@ HAVING  customers.Country = "France" AND (COUNT (OrderID)) >10;
 
 
 
-
-
-
 --  5 - Liste des clients ayant un chiffre d’affaires > 30.000 :
+
 SELECT customers.CompanyName, SUM(UnitPrice*Quantity) AS ca, Country
 FROM customers
 JOIN orders ON customers.CustomerID = orders.CustomerID
@@ -71,13 +64,10 @@ ORDER BY ca ASC, Country ASC;
 
 
 
-
-
-
-
 --  6 – Liste des pays dont les clients ont passé commande de 
 --      produits fournis par « Exotic Liquids » :
-SELECT customers.Country, suppliers.CompanyName
+
+SELECT DISTINCT customers.Country, suppliers.CompanyName
 FROM customers
 JOIN orders ON customers.CustomerID = orders.CustomerID
 JOIN order_details ON orders.OrderID = order_details.OrderID
@@ -88,32 +78,43 @@ WHERE suppliers.CompanyName = "Exotic Liquids";
 
 
 
-
 --  7 – Montant des ventes de 1997 :
 
+SELECT SUM(UnitPrice*Quantity)
+FROM order_details d
+JOIN orders o ON d.`OrderID` = o.`OrderID`
+WHERE LEFT(`OrderDate`,4) = 1997;
 
 
 
 
 --  8 – Montant des ventes de 1997 mois par mois :
 
+SELECT SUM(UnitPrice*Quantity)
+FROM order_details d
+JOIN orders o ON d.`OrderID` = o.`OrderID`
+WHERE LEFT(`OrderDate`,4) = 1997
+GROUP BY DATE_FORMAT(`OrderDate`, %m);
+
+
 
 
 
 
 --  9 – Depuis quelle date le client « Du monde entier » n’a plus commandé ?
-SELECT CompanyName, MAX(OrderDate)
-FROM orders
-JOIN customers ON orders.`CustomerID` = customers.`CustomerID`
-WHERE CompanyName = "Du monde entier";
 
+SELECT CompanyName, MAX(OrderDate)
+    FROM orders
+    JOIN customers ON orders.`CustomerID` = customers.`CustomerID`
+    WHERE CompanyName = "Du monde entier";
 
 
 
 
 --  10 – Quel est le délai moyen de livraison en jours ?
+
 SELECT AVG(DATEDIFF(ShippedDate,OrderDate))
-FROM orders;
+    FROM orders;
 
 
 
@@ -130,20 +131,17 @@ FROM orders;
 -- sur la requête 9 :
 
 DELIMITER |
-
     CREATE PROCEDURE derniereCommande(IN company VARCHAR(50))
-
         BEGIN
             SELECT CompanyName, MAX(OrderDate)
             FROM orders
             JOIN customers ON orders.`CustomerID` = customers.`CustomerID`
             WHERE CompanyName = company;
         END |
-
 DELIMITER ;
 
---  fonctionne sur phpmyadmin
---  CALL derniereCommande(`Du monde entier`);
+
+CALL derniereCommande("Du monde entier");
 
 
 
@@ -151,14 +149,11 @@ DELIMITER ;
 -- sur la requête 10 :
 
 DELIMITER |
-
     CREATE PROCEDURE delai (IN date1 VARCHAR(20),date2 VARCHAR(20))
-
         BEGIN
             SELECT AVG(DATEDIFF(date1, date2))
             FROM orders;
         END |
-
 DELIMITER ;
 
 
@@ -181,19 +176,24 @@ CREATE TRIGGER controle_pays_commande BEFORE INSERT ON order_details
         SET numCommande = NEW.OrderID;
         SET numProduit = NEW.ProductID;
 
-        SET paysLivraison = (
-            SELECT ShipCountry
-            FROM orders
-            JOIN order_details ON orders.OrderID = order_details.OrderID
-            WHERE orders.OrderID = numCommande
-        );
-
-        SET paysFournisseur = (
+        SET paysFournisseur = 
+        (
             SELECT Country
-            FROM suppliers
-            JOIN products ON suppliers.SupplierID = products.SupplierID
+            FROM suppliers s
+            JOIN products p ON s.SupplierID = p.SupplierID
             WHERE ProductID= numProduit
         );
+
+        SET paysLivraison = 
+        (
+            SELECT DISTINCT ShipCountry     --  bien mettre le 'DISTINCT' sinon erreur 'Subquery returns more than 1 row '
+            FROM customers c
+            JOIN orders o ON c.CustomerID = o.CustomerID
+            JOIN order_details d ON o.OrderID = d.OrderID
+            WHERE o.OrderID = numCommande
+        );
+
+
 
         IF paysLivraison != paysFournisseur
             THEN SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Livraison impossible';
@@ -208,89 +208,22 @@ DROP TRIGGER controle_pays_commande;
 
 
 
+--  =============  Test ajout produit refusé  ==========================
+
 INSERT INTO `order_details` (`OrderID`, `ProductID`, `UnitPrice`, `Quantity`, `Discount`) 
-            VALUES (10248, 60, 34, 5,0);
+            VALUES (10248, 30, 34, 5,0);
 
 
 
+--  ================ Test ajout de produit OK  =========================
 
-DELETE FROM `order_details`
-WHERE `ProductID`=60 AND `OrderID`=10248;
-
-
-
--- ========================================================= pikk
+INSERT INTO `order_details` (`OrderID`, `ProductID`, `UnitPrice`, `Quantity`, `Discount`) 
+            VALUES (10248, 39, 34, 5,0);
 
 
 
-USE northwind;
-
-DROP TRIGGER IF EXISTS insert_orders_details_adresse_client_fournisseur;
-
-DELIMITER |
-
-CREATE TRIGGER insert_orders_details_adresse_client_fournisseur BEFORE INSERT ON `order_details`
-FOR EACH ROW
-BEGIN
-
-    DECLARE idCommande INT;
-    DECLARE idProduit INT;
-    DECLARE paysFournisseur varchar(15);
-    DECLARE paysClient varchar(15);
-
-    SET idCommande = NEW.OrderID;
-    
-    SET idProduit = NEW.ProductID;
-
-    SET paysFournisseur = (
-        SELECT s.Country
-        FROM suppliers s
-        JOIN products p ON s.SupplierID = p.SupplierID
-        WHERE p.ProductID = idProduit
-        );
-
-    SET paysClient = (
-        SELECT DISTINCT c.Country
-        FROM customers c
-        JOIN orders o ON c.CustomerID = o.CustomerID
-        JOIN `order_details` od ON o.OrderID = od.OrderID
-        WHERE od.OrderID = idCommande
-        );
-
-    IF paysClient != paysFournisseur
-    THEN
-        SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Insertion interdite (le client et le fournisseur du produit n\'ont pas le même pays de résidence)';
-    END IF;
-END|
-
-DELIMITER ;
-
-
-
--- TEST NEGATIF -----
-
-USE northwind;
-INSERT INTO `order_details`(`OrderID`, `ProductID`, `UnitPrice`, `Quantity`, `Discount`)
-VALUES
-(10248, 1, 18.000, 8, 0);
-
-
--- TEST POSITIF -----
-
-USE northwind;
-INSERT INTO `order_details`(`OrderID`, `ProductID`, `UnitPrice`, `Quantity`, `Discount`)
-VALUES
-(10248, 58, 13.2500, 10, 0);
-
-
--- SUPPRESSION DE LA LIGNE AJOUTEE AVEC LE TEST POSITIF -----
+--  =============  Suppression de la ligne ajoutée avec le prod. 39  ===
 
 DELETE FROM `order_details`
-WHERE OrderID = 10248 AND ProductID = 58;
-
-
---  =========================================================================== fin pikk
-
-
-
+WHERE `ProductID`=39 AND `OrderID`=10248;
 
