@@ -74,6 +74,7 @@ CREATE TABLE sous_categorie(
    PRIMARY KEY(id_sous_categorie),
    FOREIGN KEY(id_categorie) REFERENCES categorie(id_categorie)
 );
+DROP TABLE IF EXISTS produit;
 
 CREATE TABLE produit(
    ref_produit VARCHAR(50),
@@ -201,12 +202,70 @@ INSERT INTO `commercial` VALUES
 
 
 INSERT INTO `produit` VALUES
-("Prod 00001","libellé du produit","DEscriptif longgggggggggg",1000.00,1500.00,2000.00,1,222,"image prod 1",1,1);
+("Prod 00001","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,222,"image prod 1",1,20005);
 
 
 
 
-SELECT id_sous_categorie id
-FROM sous_categorie
-WHERE id != 0;
+--  ====================================================
+--  ======= SAUVEGARDE DE LA BASE ======================
+--  ====================================================
+--  Dans le terminal
 
+/* mysqldump --user=admin --password=1122 filrouge.sql > backup_filrouge.sql
+         (sans chemin spécifié après le '>' , on arrive dans le dossier personnel)
+*/
+
+
+--  ===================================================
+--  ======== RESTAURATION d'une BASE   ================
+--  ===================================================
+--  Dans terminal, lancer mysql, créer la base 'new_filrouge' qui accueillera la restauration.
+--  et quitter mysql 
+
+/* cat backup_filrouge_18_04_BIS.sql | mysql --user=admin --password=1122 new_filrouge
+      (on va chercher le fichier de backup qui sera restauré sous le nouveau nom 'new_filrouge')
+
+*/
+
+
+
+
+
+--  ==========================================================================
+--  ==============   Formaliser des requêtes à l'aide du langage SQL  ========
+--  ==========================================================================
+
+--  Chiffre d'affaires mois par mois pour une année sélectionnée
+SELECT SUM(total_article) AS ta, DATE (date_commande) AS dc
+FROM contient c
+JOIN commande cde ON c.num_commande = cde.num_commande
+WHERE YEAR(date_commande)= '2022'
+GROUP BY MONTH(dc);
+
+
+
+
+--  Chiffre d'affaires généré pour un fournisseur
+
+
+
+--  TOP 10 des produits les plus commandés pour une année sélectionnée 
+--    (référence et nom du produit, quantité commandée, fournisseur)
+
+
+
+--  TOP 10 des produits les plus rémunérateurs pour une année sélectionnée 
+--    (référence et nom du produit, marge, fournisseur)
+
+
+
+--  Top 10 des clients en nombre de commandes ou chiffre d'affaires
+
+
+
+--  Répartition du chiffre d'affaires par type de client
+
+
+
+--  Nombre de commandes en cours de livraison.
