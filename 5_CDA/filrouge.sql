@@ -33,7 +33,6 @@ CREATE TABLE commercial(
 
 CREATE TABLE commande(
    num_commande VARCHAR(50),
-   ligne_commande SMALLINT,
    article_commande VARCHAR(50),
    date_commande DATE,
    remise_exceptionelle DECIMAL(4,2),
@@ -198,11 +197,32 @@ INSERT INTO `fournisseur` VALUES
 INSERT INTO `commercial` VALUES
 (1,"LeNomDuPremier",  "Client 1"),
 (2,"LeSecondNom",     "Client le 2"),
-(3,"DritteName",      "Client4");
+(3,"DritteName",      "Client4"),
+(11,"nom commercial 1", "client géré"),
+(12,"nom commercial 2", "client géré"),
+(13,"nom commercial 3", "client géré");
+
+INSERT INTO `categorie` VALUES
+(1, "Cordes", "image catégorie 1" ),
+(2, "Claviers", "image cat 2"),
+(3, "Vents", "image cat 3"),
+(4, "sonorisation", "image sonos");
+
+INSERT INTO `sous_categorie` VALUES
+(1, "Guitares", "image Guitares", 1),
+(2, "Pianos", "image pianos", 2),
+(3, "saxo", "image saxo", 3),
+(4, "Amplis", "image amplis", 4);
+
 
 
 INSERT INTO `produit` VALUES
-("Prod 00001","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,222,"image prod 1",1,20005);
+("Prod 00001","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,5,"image prod 1",1,20005)
+("Prod 00002","libellé du produit","Descriptif longgggggggggg",100.00,150.00,200.00,1,4,"image prod 2",1,20002),
+("Prod 00003","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,9,"image prod 3",1,20001),
+("Prod 00004","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,9,"image prod 3",1,20001),
+("Prod 00005","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,9,"image prod 5",4,20001),
+("Prod 00006","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,9,"image prod 6",3,20001);
 
 
 
@@ -247,12 +267,17 @@ GROUP BY MONTH(dc);
 
 
 --  Chiffre d'affaires généré pour un fournisseur
-
+SELECT SUM(total_article)
+FROM contient CALLJOIN commande cde ON c.num_commande = cde.num_commande
+WHERE id_fournisseur = (à renseigner);
 
 
 --  TOP 10 des produits les plus commandés pour une année sélectionnée 
 --    (référence et nom du produit, quantité commandée, fournisseur)
-
+SELECT TOP 10 SUM(c.quantite), libelle_produit
+FROM produit p
+JOIN contient c ON p.ref_produit = c.ref_produit;
+         --  voir avec LIMIT 10;
 
 
 --  TOP 10 des produits les plus rémunérateurs pour une année sélectionnée 
@@ -269,3 +294,43 @@ GROUP BY MONTH(dc);
 
 
 --  Nombre de commandes en cours de livraison.
+
+
+
+
+-- génération de données aléatoires pour les noms de produits
+CREATE TABLE noms_produits (
+  nom VARCHAR(255) NOT NULL
+);
+
+INSERT INTO noms_produits (nom) VALUES 
+('Téléphone portable'),
+('Ordinateur portable'),
+('Casque audio'),
+('Enceinte Bluetooth'),
+('Smartwatch'),
+('Tablette tactile'),
+('Appareil photo numérique'),
+('Imprimante multifonction'),
+('TV LED'),
+('Console de jeux');
+
+-- génération des données aléatoires pour la table produit
+INSERT INTO produit (ref_produit, libelle_produit, description_produit, prix_achat, prix_vente_pro, prix_vente_particuliers, visibilite_catalogue, stock_produit, image_produit, id_sous_categorie, id_fournisseur)
+SELECT 
+  CONCAT('PR', LPAD(ROW_NUMBER() OVER(), 4, '0')) AS ref_produit,
+  CONCAT(np.nom, ' ', LPAD(ROW_NUMBER() OVER(), 2, '0')) AS libelle_produit,
+  CONCAT('Description du produit ', ROW_NUMBER() OVER()) AS description_produit,
+  ROUND(RAND() * 1000, 2) AS prix_achat,
+  ROUND(RAND() * 1500, 2) AS prix_vente_pro,
+  ROUND(RAND() * 2000, 2) AS prix_vente_particuliers,
+  RAND() < 0.5 AS visibilite_catalogue,
+  FLOOR(RAND() * 100) AS stock_produit,
+  CONCAT('produit_', LPAD(ROUND(RAND() * 10), 2, '0'), '.jpg') AS image_produit,
+  FLOOR(RAND() * 10) + 1 AS id_sous_categorie,
+  FLOOR(RAND() * 10) + 1 AS id_fournisseur
+FROM 
+  noms_produits np
+CROSS JOIN 
+  (SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10) numbers
+LIMIT 100;
