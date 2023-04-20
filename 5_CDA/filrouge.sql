@@ -27,7 +27,8 @@ CREATE TABLE fournisseur(
 CREATE TABLE commercial(
    id_commercial INT(11),
    nom_commercial VARCHAR(50) NOT NULL,
-   affectation_client VARCHAR(50) NOT NULL,
+   prenom_commercial VARCHAR(25),
+   tel_commercial VARCHAR(15),
    PRIMARY KEY(id_commercial)
 );
 
@@ -147,7 +148,7 @@ CREATE INDEX id_fournisseur ON fournisseur(id_fournisseur ASC);
 DROP USER 'admin'@'localhost';
 
 CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY '1122';
-GRANT ALL PRIVILEGES on FilRouge.* TO 'admin'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES on filrouge.* TO 'admin'@'localhost' WITH GRANT OPTION;
 
 -- utilisateur Gestionnaire de Produits
 CREATE USER IF NOT EXISTS 'GestProd'@'localhost' IDENTIFIED BY 'GestProd';
@@ -160,7 +161,7 @@ GRANT SELECT, CREATE, DROP, UPDATE on `produit` TO 'GestProd'@'localhost';
 FLUSH PRIVILEGES;
 
 
-
+SELECT user FROM mysql.user;
 
 -- =============================================================
 -- ========  ALIMENTATION DE LA BASE  ==========================
@@ -193,36 +194,87 @@ INSERT INTO `fournisseur` VALUES
 (20008,"Jasmine Parks",     "642-9273 Semper, Av.",             59120, "Vilfournis9"),
 (20009,"Travis Ward",       "Appartement899-1647 Auctor Ave",   62100, "Vilfournis0");
 
+DELETE FROM commercial
+WHERE id_commercial > 0;
 
 INSERT INTO `commercial` VALUES
-(1,"LeNomDuPremier",  "Client 1"),
-(2,"LeSecondNom",     "Client le 2"),
-(3,"DritteName",      "Client4"),
-(11,"nom commercial 1", "client géré"),
-(12,"nom commercial 2", "client géré"),
-(13,"nom commercial 3", "client géré");
+(1,"LeNomDuPremier", "prénom1", "0601010101"),
+(2,"LeSecondNom",    "prénom2", "0702020202"),
+(3,"DritteName",     "prénom3", "0603030303"),
+(4,"commercial 4",   "prénom4", "0604040404"),
+(11,"nom commercial 1", "prénom5", "0711111111"),
+(12,"nom commercial 2", "prénom6", "0612121212"),
+(13,"nom commercial 3", "prénom7", "0613131313");
+
+DELETE FROM categorie
+WHERE id_categorie!=0;
 
 INSERT INTO `categorie` VALUES
-(1, "Cordes", "image catégorie 1" ),
-(2, "Claviers", "image cat 2"),
-(3, "Vents", "image cat 3"),
-(4, "sonorisation", "image sonos");
+(1, "Cordes", "img_cat1.jpg" ),
+(2, "Claviers", "img_cat2.jpg"),
+(3, "Vents", "img_cat3.jpg"),
+(4, "sonorisation", "img_cat4.jpg");
+
+
+DELETE FROM sous_categorie
+WHERE id_sous_categorie != 0;
 
 INSERT INTO `sous_categorie` VALUES
-(1, "Guitares", "image Guitares", 1),
-(2, "Pianos", "image pianos", 2),
-(3, "saxo", "image saxo", 3),
-(4, "Amplis", "image amplis", 4);
+(1, "Guitares", "Guitares.jpg", 1),
+(2, "Pianos", "pianos.jpg", 2),
+(3, "Saxos", "saxos.jpg", 3),
+(4, "Amplis", "amplis.jpg", 4);
+
+
+      --    VIDAGE DE LA TABLE produit !!!
+DELETE FROM produit
+WHERE ref_produit != "";
 
 
 
-INSERT INTO `produit` VALUES
-("Prod 00001","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,5,"image prod 1",1,20005)
-("Prod 00002","libellé du produit","Descriptif longgggggggggg",100.00,150.00,200.00,1,4,"image prod 2",1,20002),
-("Prod 00003","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,9,"image prod 3",1,20001),
-("Prod 00004","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,9,"image prod 3",1,20001),
-("Prod 00005","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,9,"image prod 5",4,20001),
-("Prod 00006","libellé du produit","Descriptif longgggggggggg",1000.00,1500.00,2000.00,1,9,"image prod 6",3,20001);
+INSERT INTO produit (ref_produit, libelle_produit, description_produit, prix_achat, prix_vente_pro, prix_vente_particuliers, visibilite_catalogue, stock_produit, image_produit, id_sous_categorie, id_fournisseur) VALUES
+('PROD001', 'Guitare électrique Fender Stratocaster', 'Guitare électrique haut de gamme avec corps en aulne et manche en érable', 1200.00, 1999.99, 2199.99, 1, 10, 'guitare-electrique-fender-stratocaster.jpg', 1, 1),
+('PROD002', 'Ampli Marshall JVM410H', 'Amplificateur à lampes pour guitare électrique avec 4 canaux et effets intégrés', 1500.00, 2799.99, 2999.99, 1, 5, 'ampli-marshall-jvm410h.jpg', 2, 2),
+('PROD003', 'Batterie électronique Roland TD-17KVX', 'Batterie électronique professionnelle avec module de sons TD-17 et pads en mesh', 2000.00, 2899.99, 3099.99, 1, 3, 'batterie-electronique-roland-td-17kvx.jpg', 3, 3),
+('PROD004', 'Piano numérique Yamaha P-515', 'Piano numérique portable avec clavier en bois et sons de haute qualité', 1300.00, 1999.99, 2199.99, 1, 7, 'piano-numerique-yamaha-p-515.jpg', 4, 4),
+('PROD005', 'Violon acoustique Stradivarius', 'Violon acoustique de concert fabriqué à la main en érable et en épicéa', 5000.00, 7999.99, 8999.99, 1, 2, 'violon-acoustique-stradivarius.jpg', 5, 5),
+('PROD006', 'Saxophone alto Selmer Mark VI', 'Saxophone alto professionnel en laiton doré avec clétage haut de gamme', 4000.00, 8999.99, 9999.99, 1, 1, 'saxophone-alto-selmer-mark-vi.jpg', 6, 6),
+('PROD007', 'Clarinette Buffet-Crampon R13', 'Clarinette professionnelle en grenadille avec clétage argenté et système Boehm', 3000.00, 5999.99, 6499.99, 1, 3, 'clarinette-buffet-crampon-r13.jpg', 7, 7),
+('PROD008', 'Harmonica diatonique Hohner Special 20', 'Harmonica diatonique avec corps en plastique et lames en laiton pour un son chaud et puissant', 30.00, 59.99, 69.99, 1, 20, 'harmonica-diatonique-hohner-special-20.jpg', 8, 8),
+("PROD009", "Guitare acoustique", "Guitare acoustique 6 cordes en bois de qualité supérieure", 150.00, 250.00, 200.00, true, 50, "guitare_acoustique.jpg", 1, 1),
+("PROD010", "Guitare électrique", "Guitare électrique corps en aulne, manche en érable, 2 micros double bobinage", 200.00, 350.00, 300.00, true, 30, "guitare_electrique.jpg", 1, 1),
+("PROD011", "Ampli basse", "Amplificateur pour basse de 100W, 2 canaux, EQ 3 bandes", 250.00, 400.00, 350.00, true, 20, "ampli_basse.jpg", 2, 2),
+("PROD012", "Piano numérique", "Piano numérique 88 touches, 3 pédales, 10 sons différents", 400.00, 700.00, 600.00, true, 10, "piano_numerique.jpg", 3, 3),
+("PROD013", "Cajon", "Cajon en bois avec des cordes internes pour des effets sonores variés", 100.00, 150.00, 120.00, true, 15, "cajon.jpg", 4, 4),
+("PROD014", "Tambourin", "Tambourin à cymbalettes en acier, avec peau de chèvre tendue à la main", 20.00, 30.00, 25.00, true, 100, "tambourin.jpg", 4, 4),
+("PROD015", "Métronome", "Métronome électronique avec 10 rythmes différents", 15.00, 25.00, 20.00, true, 50, "metronome.jpg", 5, 5),
+("PROD016", "Violon", "Violon de qualité supérieure, fabriqué à la main avec des matériaux de haute qualité", 300.00, 500.00, 450.00, true, 5, "violon.jpg", 6, 6),
+("PROD017", "Saxophone", "Saxophone alto en laiton doré, avec étui de transport rigide", 600.00, 1000.00, 900.00, true, 2, "saxophone.jpg", 7, 7),
+("PROD018", "Flûte traversière", "Flûte traversière en argent massif avec étui de transport", 400.00, 700.00, 600.00, true, 3, "flute_traversiere.jpg", 8, 8),
+("PROD019", "Clarinette", "Clarinette en bois avec étui de transport rigide", 350.00, 600.00, 500.00, true, 4, "clarinette.jpg", 3, 3);
+
+
+DELETE FROM commande
+WHERE num_commande != "";
+
+INSERT INTO commande VALUES
+("2023 01 09 001", "Prod 0001", "2023-01-09", 02.50, "FACT_230109001", "Virement", TRUE, TRUE, "Adresse du client 1", 52121,"ville_cli1", 1020001),
+("2023 01 09 002", "Prod 0002", "2023-01-09", 03.50, "FACT_230109002", "Virement", TRUE, TRUE, "Adresse du client 1", 52121,"ville_cli1", 1020001),
+("2023 01 09 003", "Prod 0003", "2023-01-09", 06.50, "FACT_230109003", "Virement", TRUE, TRUE, "Adresse du client 1", 52121,"ville_cli1", 1020001);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -297,40 +349,3 @@ JOIN contient c ON p.ref_produit = c.ref_produit;
 
 
 
-
--- génération de données aléatoires pour les noms de produits
-CREATE TABLE noms_produits (
-  nom VARCHAR(255) NOT NULL
-);
-
-INSERT INTO noms_produits (nom) VALUES 
-('Téléphone portable'),
-('Ordinateur portable'),
-('Casque audio'),
-('Enceinte Bluetooth'),
-('Smartwatch'),
-('Tablette tactile'),
-('Appareil photo numérique'),
-('Imprimante multifonction'),
-('TV LED'),
-('Console de jeux');
-
--- génération des données aléatoires pour la table produit
-INSERT INTO produit (ref_produit, libelle_produit, description_produit, prix_achat, prix_vente_pro, prix_vente_particuliers, visibilite_catalogue, stock_produit, image_produit, id_sous_categorie, id_fournisseur)
-SELECT 
-  CONCAT('PR', LPAD(ROW_NUMBER() OVER(), 4, '0')) AS ref_produit,
-  CONCAT(np.nom, ' ', LPAD(ROW_NUMBER() OVER(), 2, '0')) AS libelle_produit,
-  CONCAT('Description du produit ', ROW_NUMBER() OVER()) AS description_produit,
-  ROUND(RAND() * 1000, 2) AS prix_achat,
-  ROUND(RAND() * 1500, 2) AS prix_vente_pro,
-  ROUND(RAND() * 2000, 2) AS prix_vente_particuliers,
-  RAND() < 0.5 AS visibilite_catalogue,
-  FLOOR(RAND() * 100) AS stock_produit,
-  CONCAT('produit_', LPAD(ROUND(RAND() * 10), 2, '0'), '.jpg') AS image_produit,
-  FLOOR(RAND() * 10) + 1 AS id_sous_categorie,
-  FLOOR(RAND() * 10) + 1 AS id_fournisseur
-FROM 
-  noms_produits np
-CROSS JOIN 
-  (SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10) numbers
-LIMIT 100;
