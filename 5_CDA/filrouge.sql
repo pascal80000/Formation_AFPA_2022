@@ -312,7 +312,7 @@ INSERT INTO commande VALUES
 SELECT SUM(total_article) AS ta, DATE (date_commande) AS dc
 FROM contient c
 JOIN commande cde ON c.num_commande = cde.num_commande
-WHERE YEAR(date_commande)= '2022'
+WHERE YEAR(date_commande)= '2023'
 GROUP BY MONTH(dc);
 
 
