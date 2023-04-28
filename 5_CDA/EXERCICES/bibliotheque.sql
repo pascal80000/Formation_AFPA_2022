@@ -5,6 +5,7 @@ CREATE DATABASE bibliotheque;
 
 USE bibliotheque;
 
+DROP TABLE personnel;
 
 CREATE TABLE personnel(
    id_personnel INT,
@@ -46,7 +47,7 @@ CREATE TABLE client(
    date_cotisation DATE,
    id_visionneuse VARCHAR(50),
    PRIMARY KEY(id_client),
-   UNIQUE(id_visionneuse),
+   -- UNIQUE(id_visionneuse),
    FOREIGN KEY(id_visionneuse) REFERENCES visionneuse(id_visionneuse)
 );
 
