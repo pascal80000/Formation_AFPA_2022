@@ -16,15 +16,22 @@
 // 2    Écrire un programme qui écrit 500 fois la phrase Je dois faire 
 //      des sauvegardes régulières de mes fichiers
 
-    for($i=0; $i < 500; $i++)
+    for($i=0; $i < 5; $i++)
         {
-        echo $i," Je dois faire des sauvegardes régulières de mes fichiers";
+        echo $i," Je dois faire des sauvegardes régulières de mes fichiers   ","\n"  ;
         }
 
 // 3    Ecrire un script qui affiche la table de multiplication totale de {1,...,12} par {1,...,12} dans un tableau HTML. 
 
+    for($i=0; $i<9; $i++)
+    {
+        for($j=0; $j<9; $j++)
+        {
+            echo($i*$j);
+        }
+        echo("\n");
 
-
+    }
 
 
 ?>

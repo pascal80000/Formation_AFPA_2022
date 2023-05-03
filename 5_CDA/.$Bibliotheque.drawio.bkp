@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-05-02T14:26:23.390Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="ofTftHENKYh6YVP8HDWG" version="21.2.1" type="device" pages="7">
+<mxfile host="Electron" modified="2023-05-03T10:03:40.393Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="G_KHWtH5BCtBLGZGw2C6" version="21.2.1" type="device" pages="4">
   <diagram name="Page-1 Cas d&#39;utilisation" id="nA95JgjUixVS5YG4Opld">
-    <mxGraphModel dx="1364" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#D4D4D4" math="0" shadow="1">
+    <mxGraphModel dx="901" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#D4D4D4" math="0" shadow="1">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -749,95 +749,18 @@
     </mxGraphModel>
   </diagram>
   <diagram id="i-z8gyhMqiAvHCMC_e04" name="Page-4 Maquette index">
-    <mxGraphModel dx="1605" dy="992" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="870" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <UserObject label="" id="0Vkux53fJcWMVqBXnyqx-1">
-          <mxCell style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;" vertex="1" parent="1">
+          <mxCell style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;" parent="1" vertex="1">
             <mxGeometry x="60" y="90" width="270" height="140" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="vJnLhF5E93vP2sPedZRu-5" value="MEDIATHEQUE" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.window;align=left;verticalAlign=top;spacingLeft=8;strokeColor2=#008cff;strokeColor3=#c4c4c4;fontColor=#666666;mainText=;fontSize=17;labelBackgroundColor=none;whiteSpace=wrap;container=0;perimeter=rectanglePerimeter;" vertex="1" parent="1">
+        <mxCell id="vJnLhF5E93vP2sPedZRu-5" value="MEDIATHEQUE" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.window;align=left;verticalAlign=top;spacingLeft=8;strokeColor2=#008cff;strokeColor3=#c4c4c4;fontColor=#666666;mainText=;fontSize=17;labelBackgroundColor=none;whiteSpace=wrap;container=0;perimeter=rectanglePerimeter;" parent="1" vertex="1">
           <mxGeometry x="60" y="250" width="550" height="380" as="geometry" />
         </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-  <diagram id="SKnDQrC0UTqmjbfQbgs6" name="Page-5 Connexion">
-    <mxGraphModel dx="1949" dy="1204" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <UserObject label="" link="data:page/id,i-z8gyhMqiAvHCMC_e04" id="YkyEAS6srmrHv09U_dtY-1">
-          <mxCell style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;" vertex="1" parent="1">
-            <mxGeometry x="40" y="40" width="270" height="140" as="geometry" />
-          </mxCell>
-        </UserObject>
-        <mxCell id="D34hUv-Xlz3eAyrXBBLi-1" value="" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
-          <mxGeometry x="80" y="239" width="220" height="345" as="geometry" />
-        </mxCell>
-        <mxCell id="D34hUv-Xlz3eAyrXBBLi-2" value="Email address" style="fillColor=none;strokeColor=none;align=left;spacing=20;fontSize=14;" vertex="1" parent="D34hUv-Xlz3eAyrXBBLi-1">
-          <mxGeometry width="220" height="40" relative="1" as="geometry">
-            <mxPoint y="10" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="D34hUv-Xlz3eAyrXBBLi-3" value="email@example.com" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;fillColor=none;strokeColor=#999999;align=left;spacing=15;fontSize=14;fontColor=#6C767D;" vertex="1" parent="D34hUv-Xlz3eAyrXBBLi-1">
-          <mxGeometry width="180" height="30" relative="1" as="geometry">
-            <mxPoint x="20" y="50" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="D34hUv-Xlz3eAyrXBBLi-4" value="Password" style="fillColor=none;strokeColor=none;align=left;spacing=20;fontSize=14;" vertex="1" parent="D34hUv-Xlz3eAyrXBBLi-1">
-          <mxGeometry width="220" height="40" relative="1" as="geometry">
-            <mxPoint y="90" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="D34hUv-Xlz3eAyrXBBLi-5" value="Password" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;fillColor=none;strokeColor=#999999;align=left;spacing=15;fontSize=14;fontColor=#6C767D;" vertex="1" parent="D34hUv-Xlz3eAyrXBBLi-1">
-          <mxGeometry width="180" height="30" relative="1" as="geometry">
-            <mxPoint x="20" y="130" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="D34hUv-Xlz3eAyrXBBLi-6" value="Remember me" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=2;fillColor=#EDEDED;strokeColor=#999999;align=left;fontSize=14;fontColor=#000000;labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=5;spacingTop=-2;gradientColor=#DEDEDE;" vertex="1" parent="D34hUv-Xlz3eAyrXBBLi-1">
-          <mxGeometry width="10" height="10" relative="1" as="geometry">
-            <mxPoint x="20" y="180" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="D34hUv-Xlz3eAyrXBBLi-7" value="Sign in" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;fillColor=#0085FC;strokeColor=none;align=center;fontSize=14;fontColor=#FFFFFF;" vertex="1" parent="D34hUv-Xlz3eAyrXBBLi-1">
-          <mxGeometry width="70" height="40" relative="1" as="geometry">
-            <mxPoint x="20" y="210" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="D34hUv-Xlz3eAyrXBBLi-8" value="" style="shape=line;strokeColor=#999999;perimeter=none;resizeWidth=1;" vertex="1" parent="D34hUv-Xlz3eAyrXBBLi-1">
-          <mxGeometry width="220" height="10" relative="1" as="geometry">
-            <mxPoint y="260" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="D34hUv-Xlz3eAyrXBBLi-9" value="New around here? Sign up&lt;br&gt;&lt;br&gt;Forgot password?" style="html=1;fillColor=none;strokeColor=none;align=left;spacing=20;fontSize=14;" vertex="1" parent="D34hUv-Xlz3eAyrXBBLi-1">
-          <mxGeometry width="220" height="60" relative="1" as="geometry">
-            <mxPoint y="275" as="offset" />
-          </mxGeometry>
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-  <diagram id="qDE09WC00tiH1IRC0lcY" name="Page-6 Catalogue">
-    <mxGraphModel dx="1949" dy="1204" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <UserObject label="" link="data:page/id,i-z8gyhMqiAvHCMC_e04" id="ReaWk4lvbsKHHtAL-5Ik-1">
-          <mxCell style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;" vertex="1" parent="1">
-            <mxGeometry x="40" y="40" width="270" height="140" as="geometry" />
-          </mxCell>
-        </UserObject>
-      </root>
-    </mxGraphModel>
-  </diagram>
-  <diagram id="CM1cf1Sarvq4t2p69TCm" name="Page-7 Fiche produit">
-    <mxGraphModel dx="1364" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
       </root>
     </mxGraphModel>
   </diagram>

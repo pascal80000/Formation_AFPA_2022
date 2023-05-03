@@ -55,6 +55,7 @@ CREATE TABLE livraison(
    date_BL DATE,
    adresse_BL VARCHAR(50),
    num_commande VARCHAR(50) NOT NULL,
+   livraison_ok BOOLEAN,
    PRIMARY KEY(num_BL),
    FOREIGN KEY(num_commande) REFERENCES commande(num_commande)
 );
@@ -348,4 +349,36 @@ JOIN contient c ON p.ref_produit = c.ref_produit;
 --  Nombre de commandes en cours de livraison.
 
 
+--  ==========================================================================
+--  ======    Programmer des procédures stockées sur le SGBD   ===============
+--  ==========================================================================
 
+
+--    Commandes en cours de livraison
+
+CREATE PROCEDURE encours()
+BEGIN
+   SELECT * FROM commande c
+   JOIN livraison l ON c.num_commande = l.num_commande
+   WHERE livraison_ok = FALSE;
+END;
+
+
+
+
+--    Délai moyen entre la date de commande et la facturation
+
+
+
+
+
+--  ==========================================================================
+--  =======     Gérer les vues        ========================================
+--  ==========================================================================
+
+--    Jointure produits - fournisseurs
+
+
+
+
+--    Jointure Produits - Catégorie/Sous catégorie
