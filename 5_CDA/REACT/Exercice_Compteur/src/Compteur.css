@@ -1,0 +1,33 @@
+
+h1 {
+    font-size: 2em;
+    line-height: 1;
+    color: #0d7ba0;
+  }
+  
+  button {
+    border-radius: 12px;
+    border: 5px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #e6dddd;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  
+  button:hover {
+    border-color: #951c83;
+  }
+  
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+
+
+  card {
+    padding: 2em;
+  }
+  
