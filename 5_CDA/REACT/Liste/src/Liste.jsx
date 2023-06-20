@@ -1,59 +1,55 @@
-import { React, useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState } from 'react'
 import './Liste.css'
 
-function Liste (props) {
+function Liste() {
 
-  const [article, setArticle] = useState("");
+  const [articles, setArticles] = useState([]);
 
-  const handleChangeArticle = (evt) => {
-      setArticle(evt.target.value);
-  
-      const handleChangeArticle =(evt) => {
-          setArticle(evt.target.value)
-      };
+  const addArticle = (event) => {
+    event.preventDefault();
+    const newArticle = event.target.article.value.trim();
+    if (newArticle !== '') {
+      setArticles([...articles, newArticle]);
+      event.target.article.value = '';
+    }
+  };
 
-      const handleClick = (evt) => {
-          props.onClick(article)
-      };
-
-
-
+  const delArticles = (event) => {
+    event.preventDefault();
+    setArticles('');
   }
-
-let article = ["article", "article2"];
-
-
-
 
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div class="maListe">
+      <div class="titre">
+        <h2>Liste de courses</h2>
       </div>
 
-      <h3>Liste de courses</h3>
+        <div class="boutons">
+        <form onSubmit={addArticle}>
+          <input type="text" name="article" placeholder='Entrer un article' />
+          <button class="ok" type="submit">Ajouter</button>
+        </form>
 
-      <div className="card">
-        <input type="text" value={article} onChange={handleChangeArticle}/>
+        <form onAbort={delArticles}>
+          <button class="ko" type="submit">Vider la liste</button>
+        </form>
+        </div>
 
-        <button onClick={handleClick}>
-          Ajouter
-        </button>
+        <div class="items">
+          <ul>
+            {articles.map((articles, index) => (
+              <li key={index}>{articles}</li>
+            ))}
+          </ul>
+        </div>
+    </div>
+  );
+  }
 
 
-      </div>
 
 
-    </>
-  )
-}
+export default Liste;
 
-export {Liste}
