@@ -14,14 +14,14 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
   color: #8ac757;
-}
+} */
 
 
 h2 {
@@ -43,14 +43,14 @@ button {
   transition: border-color 0.5s;
 }
 .ok:hover {
-  border-color: #08f21c;
+  border-color: #2faa39;
+  background-color: rgb(52, 226, 242);
+  text-transform: uppercase;
+
 }
 .ko:hover {
   border-color: #f20814;
   background-color: rgb(208, 227, 6);
-}
-button:focus,
-button:focus-visible {
-  outline: 12px auto -webkit-focus-ring-color;
+  text-transform: uppercase;
 }
 

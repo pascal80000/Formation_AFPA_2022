@@ -5,15 +5,21 @@
   text-align: left;
 }
 
-.maListe {
-  display: flexbox;
-  
-}
-
 .titre {
   display: flex;
   align-content: center;
   align-items: center;
+}
+
+.saisie {
+  display: flex;
+  align-items: center;
+  color: blue;
+}
+
+.maListe {
+  display: flex;
+
 }
 
 .items {
@@ -24,3 +30,17 @@
   border-radius: 8px;
 }
 
+
+
+@media screen and (max-width: 768px)
+{
+  body {line-height: 1.2;};
+  fieldset
+    {
+      flex-direction: column;
+      background-color: aqua;
+    }
+
+
+
+}

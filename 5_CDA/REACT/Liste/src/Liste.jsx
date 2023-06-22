@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Liste.css'
 
 function Liste() {
@@ -21,34 +21,46 @@ function Liste() {
 
 
   return (
-    <div class="maListe">
-      <div class="titre">
-        <h2>Liste de courses</h2>
+
+      <div class="maListe">
+            <fieldset>
+            <div class="titre">
+              <h2>Liste de courses</h2>
+            </div>
+            </fieldset>
+            <fieldset>
+
+              <div class="boutons">
+                  <form onSubmit={addArticle}>
+
+                    <div class="saisie">
+                      <input type="text" name="article" placeholder='Entrer un article' />
+                    </div>
+                  <button class="ok ml-5" type="submit">Ajouter</button>
+                  </form>
+
+                  <form onAbort={delArticles}>
+                    <button class="ko" type="submit">Vider la liste</button>
+                  </form>
+              </div>
+              </fieldset>
+
+
+              <div class="items">
+                <fieldset>
+                  <legend>ARTICLES</legend>
+                <ul>
+                  {articles.map((articles, index) => (
+                    <li key={index}>{articles}</li>
+                  ))}
+                </ul>
+
+                </fieldset>
+              </div>
       </div>
 
-        <div class="boutons">
-        <form onSubmit={addArticle}>
-          <input type="text" name="article" placeholder='Entrer un article' />
-          <button class="ok" type="submit">Ajouter</button>
-        </form>
-
-        <form onAbort={delArticles}>
-          <button class="ko" type="submit">Vider la liste</button>
-        </form>
-        </div>
-
-        <div class="items">
-          <ul>
-            {articles.map((articles, index) => (
-              <li key={index}>{articles}</li>
-            ))}
-          </ul>
-        </div>
-    </div>
   );
   }
-
-
 
 
 export default Liste;
