@@ -36,7 +36,7 @@ function Liste() {
                     <div class="saisie">
                       <input type="text" name="article" placeholder='Entrer un article' />
                     </div>
-                  <button class="ok ml-5" type="submit">Ajouter</button>
+                  <button class="ok ml-5 " type="submit">Ajouter</button>
                   </form>
 
                   <form onAbort={delArticles}>
