@@ -54,3 +54,8 @@ button {
   text-transform: uppercase;
 }
 
+.header {
+  display: flex;
+  color: #2b3825;
+  background-color: #0d9a9d;
+}
