@@ -20,6 +20,13 @@ function Liste() {
   }
 
 
+
+
+
+
+
+
+
   return (
 
     <div class="maListe">
@@ -30,29 +37,20 @@ function Liste() {
       </fieldset>
 
       <fieldset>
-
-
-          <div class="boutons">
+        <div class="boutons">
           <li>
             <form onSubmit={addArticle}>
-
               <div class="saisie">
                 <input type="text" name="article" placeholder='Entrer un article' />
               </div>
-
-              
               <button class="ok" type="submit">Ajouter</button>
             </form>
-
             <form onAbort={delArticles}>
               <button class="ko" type="submit">Vider la liste</button>
             </form>
-            </li>
-          </div>
-
-
+          </li>
+        </div>
       </fieldset>
-
 
       <div class="items">
         <fieldset>
