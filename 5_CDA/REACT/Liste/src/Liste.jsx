@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './Liste.css'
+
 
 function Liste() {
 
@@ -7,6 +7,7 @@ function Liste() {
 
   const addArticle = (event) => {
     event.preventDefault();
+
     const newArticle = event.target.article.value.trim();
     if (newArticle !== '') {
       setArticles([...articles, newArticle]);
@@ -20,42 +21,35 @@ function Liste() {
   }
 
 
-
-
-
-
-
-
-
   return (
 
-    <div class="maListe">
+    <div class="list-group m-4 ">
       <fieldset>
-        <div class="titre">
+        <div class="card-header m-4 ">
           <h2>Liste de courses</h2>
         </div>
       </fieldset>
 
-      <fieldset>
-        <div class="boutons">
-          <li>
+      <fieldset class="container">
+        <div class="card m-4 ">
+          <ul class="pager">
             <form onSubmit={addArticle}>
-              <div class="saisie">
-                <input type="text" name="article" placeholder='Entrer un article' />
+              <div class="m-2">
+                <input type="text" name="article" placeholder='  Entrer un article' />
               </div>
-              <button class="ok" type="submit">Ajouter</button>
+              <button class="ok m-2" type="submit">Ajouter</button>
             </form>
             <form onAbort={delArticles}>
-              <button class="ko" type="submit">Vider la liste</button>
+              <button class="ko m-2" type="submit">Vider la liste</button>
             </form>
-          </li>
+          </ul>
         </div>
       </fieldset>
 
       <div class="items">
-        <fieldset>
+        <fieldset class="card-header m-4">
           <legend>ARTICLES</legend>
-          <ul>
+          <ul class="list-group-item list-group-item-action flex-column align-items-start ">
             {articles.map((articles, index) => (
               <li key={index}>{articles}</li>
             ))}
